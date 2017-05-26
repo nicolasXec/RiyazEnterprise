@@ -1,0 +1,51 @@
+
+
+.header h1 {
+  margin:0px;
+}
+
+.header md-content{
+  background: none;
+}
+
+.header-text{
+margin-left: 8px;
+margin-right: 8px;
+}
+
+.home-page-banner{
+  background-image:url("../images/homeBanner.jpg");
+  height: 570px;
+  width:100%;
+  background-repeat: no-repeat;
+  background-size: contain
+
+}
+
+
+.item-image{
+  height:220px;
+}
+.item-image-text{
+display: block;
+margin:16px;
+font-size: 22px;
+font-family: serif;
+font-weight: 100;
+
+}
+
+/*.item-carousel-tittle{
+  font-size: 28px ;
+  font-family: serif;
+  color:blue;
+}*/
+
+
+.logo{
+
+  width:225px;
+  padding-left:6em;
+  padding-top:16px;
+  padding-bottom:16px;
+}
