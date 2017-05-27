@@ -3,11 +3,12 @@ var links = require('../common/links.js');
 var homeModule  = angular.module('homeM', [])
       .component('home', {
         templateUrl: links.templatesBasePath + 'home.html'
-        ,controller: ['$mdPanel',
-          function homeController ($mdPanel) {
+        ,controller: ['$mdPanel', '$scope',
+          function homeController ($mdPanel, $scope) {
             console.log("hello i am home controller");
 
             var self = this;
+
 
             self._mdPanel = $mdPanel;
             //EOC User Menu section
@@ -75,11 +76,11 @@ var homeModule  = angular.module('homeM', [])
 
             self.showUserMenu = function (ev) {
 
-                console.log('show panel ');
+                console.log('show panel '+$scope.fixedTop);
 
-                self.userMenuConfig.openFrom = ev;
+                //self.userMenuConfig.openFrom = ev;
 
-                self._mdPanel.open(self.userMenuConfig);
+                //self._mdPanel.open(self.userMenuConfig);
             };
 
 
