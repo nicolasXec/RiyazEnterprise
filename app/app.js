@@ -18,6 +18,8 @@ require('./home/home.component.js');
 var vrentalApp = angular.module('webApp', [
   //Material devDependencies
   'ngMaterial'
+  , 'ngAnimate'
+  , 'ngAria'
 
   //other dev dependencies
 
