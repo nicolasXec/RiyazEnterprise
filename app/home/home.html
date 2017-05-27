@@ -18,13 +18,13 @@
         </div>
 
 
-    </div>
+    </div> 
   </div>
 
-  <div flex >
+  <scroll-fix flex >
       <md-content>
           <md-tabs md-center-tabs="true" md-dynamic-height md-border-bottom >
-            <md-tab label="Products">
+            <md-tab label="Products" ng-click="$ctrl.showMenu()">
 
             </md-tab>
             <md-tab label="Featured brands">
@@ -41,7 +41,7 @@
             </md-tab>
           </md-tabs>
      </md-content>
-  </div>
+  </scroll-fix>
 
   <div flex >
 
@@ -67,7 +67,7 @@
         </md-card-header>
 
         <md-card-content>
-        <!-- <div layout="row" layout-align="center center">
+        <div layout="row" layout-align="center center">
           <div flex class="text-md-center">
          <img ng-src="images/1.jpg" class="item-image" alt="Washed Out">
           <span  class="item-image-text">Living Room</span>
@@ -85,9 +85,9 @@
    <span  class="item-image-text" >Bathroom</span>
     <md-button class="md-raised md-warn">Shop Now</md-button>
           </div>
-        </div> -->
+        </div>
 
-      
+
         </md-card-content>
       </md-card>
 
