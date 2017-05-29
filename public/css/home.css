@@ -5,6 +5,55 @@
   right: 16px;
     z-index: 55;
 }
+
+.menu-panel{
+  position: fixed;
+    background-color: white;
+    top: 9em;
+    left: 28%;
+    box-shadow: 1px 1px 3px 0px;
+    padding:4px;
+}
+.panel-sub-menu-nav{
+  margin: 0px;
+      width: 100%;
+      font-size: 12px;
+      text-align: center;
+}
+
+.panel-sub-menu-nav-container md-list-item, md-list-item .md-list-item-inner {
+  height: 36px;
+	min-height: initial; // initial makes better sense than 100%?
+
+}
+.panel-main-menu-nav{
+color:#dc7272;
+}
+
+.panel-main-menu-icon{
+  color:#dc7272;
+
+}
+
+.panel-main-menu-nav1{
+color:#403eab;
+}
+
+.panel-main-menu-icon1{
+  color:#403eab;
+
+}
+
+.panel-main-menu-nav2{
+color:rgb(214, 101, 139);
+}
+
+.panel-main-menu-icon2{
+  color:rgb(214, 101, 139);
+
+}
+
+
 .header h1 {
   margin:0px;
 }
