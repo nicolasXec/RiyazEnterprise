@@ -36,7 +36,7 @@ module.exports = {
    //compiler options
    ,new webpack.optimize.UglifyJsPlugin({
          compress: devMode?false:true
-        ,sourceMap: devMode?true:false
+        ,sourceMap: devMode?false:false
         ,drop_console: devMode?false:true
         ,beautify: devMode?true:false
         ,comments: devMode?true:false //preserve comments

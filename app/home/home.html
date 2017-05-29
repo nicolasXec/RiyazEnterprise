@@ -1,11 +1,24 @@
 
-
-<div layout="column">
+<div class="fab-scroll-to-top-btn">
+  <md-button class="md-fab " aria-label="Eat cake">
+               <md-icon aria-label="Menu" class="material-icons text-white">expand_less</md-icon>
+  </md-button>
+</div>
+<div layout="column" style="background-color:#ebeff1;">
   <div flex  class="header-color header">
     <div layout="row">
 
         <div flex>
-            <img src="images/logo.png" alt="no image found" class="logo">
+          <div class="row">
+            <div class="col-md-5 offset-md-2 pt-4">
+              <h5 class="text-white logo-text pr-2">Riyaz Enterprises</h5>
+                <img src="images/logo.png" alt="no image found" class="logo pl-3">
+            </div>
+
+
+          </div>
+
+
         </div>
         <div flex>
             <md-content class="md-padding" >
@@ -14,6 +27,9 @@
       <md-icon aria-label="Menu" class="material-icons text-white">email</md-icon>
       <span class = "text-white  header-text">akhlshaikh28@gmail.com</span>
 
+
+
+ <md-button class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Send Inquiry</md-button>
       </md-content>
         </div>
 
@@ -21,29 +37,23 @@
     </div>
   </div>
 
-  <scroll-fix flex >
-      <md-content>
-          <md-tabs md-center-tabs="true" md-dynamic-height md-border-bottom >
-            <md-tab label="Products" ng-click="$ctrl.showUserMenu($event)" class="signupbtn">
+  <scroll-fix flex  class="nav-bar-contaienr" fixed="$ctrl.fixedNav">
+    <div class="row">
+      <div class="col-md-2 offset-md-1 ">
+      <img src="images/logo.png" ng-show="$ctrl.fixedNav" alt="no image found" class="logo-in-fixed-nav">
+      </div>
+      <div class="col-md-6">
+          <nav-menu items="$ctrl.navItems" ></nav-menu>
+      </div>
 
-            </md-tab>
-            <md-tab label="Featured brands">
+    </div>
 
-            </md-tab>
-            <md-tab label="Store Locations">
 
-            </md-tab>
-            <md-tab label="Contact us">
 
-            </md-tab>
-            <md-tab label="About us">
-
-            </md-tab>
-          </md-tabs>
-          <md-button ng-hide="!($ctrl.fixedTop)" >Enquiry</md-button>
-     </md-content>
   </scroll-fix>
 
+
+<!-- <h1>{{ $ctrl.tittle }}</h1> -->
   <div flex >
 
     <div class="home-page-banner">
@@ -55,62 +65,256 @@
   </div>
 
   <div flex>
-    <md-content class="md-padding">
+    <md-content class="md-padding" style="background-color:white;">
+      <div class="text-md-center">
+        <span class="card-item-tittle ">Shop by </span>
+      </div>
 
 
-      <md-card>
-        <md-card-header>
 
-          <md-card-header-text  class="text-md-center">
-            <span class="md-title text-primary lead">Shop by </span>
+        <div layout="row" layout-align="space-between center">
+          <div flex="5" class="text-md-left">
+            <md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Eat cake">
+    <md-icon  aria-label="Menu" class="material-icons ">navigate_before</md-icon>
+</md-button>
 
-          </md-card-header-text>
-        </md-card-header>
+          </div>
+          <div flex layout="row">
+            <div flex class="text-md-center">
+            <md-card>
+  <img ng-src="images/1.jpg" class="md-card-image" alt="Washed Out">
+  <md-card-title>
+   <md-card-title-text>
+     <span class="md-headline">Living Room</span>
+   </md-card-title-text>
+  </md-card-title>
+            <md-card-content>
 
-        <md-card-content>
-        <div layout="row" layout-align="center center">
-          <div flex class="text-md-center">
-         <img ng-src="images/1.jpg" class="item-image" alt="Washed Out">
-          <span  class="item-image-text">Living Room</span>
-           <md-button class="md-raised md-warn">Shop Now</md-button>
+
+
+            <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+            </md-card-content>
+
+            </md-card>
+
+            </div>
+
+
+            <div flex style="text-align:center">
+              <md-card>
+  <img ng-src="images/2.jpg" class="md-card-image"  alt="Washed Out">
+  <md-card-title>
+   <md-card-title-text>
+     <span class="md-headline">Kitchen</span>
+   </md-card-title-text>
+  </md-card-title>
+              <md-card-content>
+
+
+      <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+
+
+              </md-card-content>
+
+              </md-card>
+
+            </div>
+
+
+            <div flex style="text-align:center">
+              <md-card>
+  <img ng-src="images/3.jpg" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+         <md-card-title-text>
+           <span class="md-headline">Bathroom</span>
+         </md-card-title-text>
+        </md-card-title>
+              <md-card-content>
+
+
+              <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+              </md-card-content>
+
+              </md-card>
+
+            </div>
           </div>
 
-          <div flex style="text-align:center">
-   <img ng-src="images/2.jpg" class="item-image"  alt="Washed Out">
-    <span   class="item-image-text">Kitchen</span>
-     <md-button class="md-raised md-warn">Shop Now</md-button>
-          </div>
 
-          <div flex style="text-align:center">
-   <img ng-src="images/3.jpg" class="item-image" alt="Washed Out">
-   <span  class="item-image-text" >Bathroom</span>
-    <md-button class="md-raised md-warn">Shop Now</md-button>
+
+          <div flex="5" class="text-md-right">
+            <md-button class="md-fab md-mini md-primary md-hue-2 " aria-label="Eat cake">
+    <md-icon  aria-label="Menu" class="material-icons ">navigate_next</md-icon>
+</md-button>
+
+
           </div>
         </div>
 
 
-        </md-card-content>
-      </md-card>
+
+
+
+    </md-content>
+
+
+    <md-content class="md-padding" style="background-color:white;">
+      <div class="text-md-center">
+        <span class="card-item-tittle ">Shop by </span>
+      </div>
+
+
+
+        <div layout="row" layout-align="space-between center">
+          <div flex="5" class="text-md-left">
+            <md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Eat cake">
+    <md-icon  aria-label="Menu" class="material-icons ">navigate_before</md-icon>
+</md-button>
+
+          </div>
+          <div flex layout="row">
+            <div flex class="text-md-center">
+            <md-card>
+  <img ng-src="images/1.jpg" class="md-card-image" alt="Washed Out">
+  <md-card-title>
+   <md-card-title-text>
+     <span class="md-headline">Living Room</span>
+   </md-card-title-text>
+  </md-card-title>
+            <md-card-content>
+
+
+
+            <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+            </md-card-content>
+
+            </md-card>
+
+            </div>
+
+
+            <div flex style="text-align:center">
+              <md-card>
+  <img ng-src="images/2.jpg" class="md-card-image"  alt="Washed Out">
+  <md-card-title>
+   <md-card-title-text>
+     <span class="md-headline">Kitchen</span>
+   </md-card-title-text>
+  </md-card-title>
+              <md-card-content>
+
+
+      <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+
+
+              </md-card-content>
+
+              </md-card>
+
+            </div>
+
+
+            <div flex style="text-align:center">
+              <md-card>
+  <img ng-src="images/3.jpg" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+         <md-card-title-text>
+           <span class="md-headline">Bathroom</span>
+         </md-card-title-text>
+        </md-card-title>
+              <md-card-content>
+
+
+              <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+              </md-card-content>
+
+              </md-card>
+
+            </div>
+          </div>
+
+
+
+          <div flex="5" class="text-md-right">
+            <md-button class="md-fab md-mini md-primary md-hue-2 " aria-label="Eat cake">
+    <md-icon  aria-label="Menu" class="material-icons ">navigate_next</md-icon>
+</md-button>
+
+
+          </div>
+        </div>
+
+
+
 
 
     </md-content>
   </div>
 
-  <div flex class="footer-color">
-    <div class="container text-md-center">
-<div class="row">
-  <div class="col-md-4">
-    <!-- <p class="text-white">
-      sdfsaf
-    </p> -->
+  <div flex class="footer-color footer">
+    <div class="container ">
+<div class="row pb-3 pt-3">
+  <div class="col-md-3 offset-md-2">
+    <p class=" h5 mt-3 mb-3">
+      Company
+    </p>
+    <div class="row">
+      <div class="col-md-5">
+        <ul class="list-unstyled">
+      <li class=" footer-links " >About us </li>
+      <li class=" footer-links" >Help Center</li>
+      <li class=" footer-links">Site Map</li>
+      </ul>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-unstyled">
+      <li class=" footer-links" >Careers</li>
+      <li class=" footer-links" >Team</li>
+      <li class=" footer-links">Privacy Policy</li>
+      </ul>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-      <p class="r  lead text-white">© Copyright 2000 - 2017 RiyazEnterprise.com  </p>
-  </div>
+  <div class="col-md-3">
+    <p class="h5 mt-3 mb-3">
+    More Information
+    </p>
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="list-unstyled">
+      <li class=" footer-links" >Payment & security </li>
+      <li class=" footer-links" >Terms of use</li>
+      <li class=" footer-links">Terms of offer</li>
+      </ul>
+      </div>
+      <div class="col-md-5">
+        <ul class="list-unstyled">
+      <li class=" footer-links" >Contact us</li>
+      <li class=" footer-links" >Visit us</li>
+      <li class=" footer-links">Buy in Bulk</li>
+      </ul>
+      </div>
+    </div>
 
+
+  </div>
+  <div class="col-md-3">
+    <p class=" h5 mt-3 mb-3">
+  Connnect with us
+    </p>
+    <div class="footer-social-icons">
+
+    <ul class="social-icons" style="margin-bottom:10px;">
+        <li><a href="" class="social-icon"> <i class="fa fa-facebook"></i></a></li>
+        <li><a href="" class="social-icon"> <i class="fa fa-twitter"></i></a></li>
+        <li><a href="" class="social-icon"> <i class="fa fa-youtube"></i></a></li>
+        <li><a href="" class="social-icon"> <i class="fa fa-google-plus"></i></a></li>
+    </ul>
 </div>
+<md-button class="md-accent md-raised md-hue-3 text-white pl-4 pr-4 pt-1 pb-1 md-button md-ink-ripple m-0 ml-3">Send Inquiry</md-button>
+  </div>
+</div>
+
 
 
 
@@ -118,6 +322,16 @@
 
 
 
+
+  </div>
+
+  <div flex style="background-color:#36369c; box-shadow: -2px 1px 10px -1px;">
+    <div class="row">
+      <div class="col-md-12 text-md-center">
+          <p class="   p-2 m-0 text-white">© Copyright 2000 - 2017 RiyazEnterprise.com  </p>
+      </div>
+
+    </div>
 
   </div>
 

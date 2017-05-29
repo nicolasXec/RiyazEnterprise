@@ -5,4 +5,43 @@
   position:fixed;
   top:0;
   width: 100%;
+  z-index:40;
+  box-shadow:1px 1px 6px -1px;
+}
+
+.nav-bar-contaienr{
+    background-color:white;
+}
+
+
+/*nav Menu css*/
+
+nav-menu .md-button{
+  margin:0px;
+  text-transform: none;
+  padding-top:8px;
+  padding-bottom:8px;
+  border-radius:0px;
+  font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+
+}
+
+nav-menu .add-bold{
+font-weight: 600;
+
+}
+
+
+nav-menu .material-icons{
+  font-size:20px;
+}
+
+
+.slider{
+      position: absolute;
+      left: 18px;
+      height: 4px;
+      background: #4FC2E5;
+      width: 64px;
+      transition: all 0.5s;
 }

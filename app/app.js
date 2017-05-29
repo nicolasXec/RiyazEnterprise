@@ -14,10 +14,13 @@ console.log('the entry point');
 //user defined components
 require('./home/home.component.js');
 
+var links = require('./common/links.js');
+
 
 var vrentalApp = angular.module('webApp', [
   //Material devDependencies
-  'ngMaterial'
+
+  , 'ngMaterial'
   , 'ngAnimate'
   , 'ngAria'
 
@@ -28,38 +31,61 @@ var vrentalApp = angular.module('webApp', [
   ,'homeM'
 ]);
 
+angular.module('webApp').component('app', {
+    template:"<home></home>"
+   ,controller: ["$scope" , function($scope){
+      console.log("main App controller");
+
+      var self = this;
+
+    //   self.navItems = [
+    //     {name : "product", Type : true}
+    //   , {name : "About us", Type : false}
+    // ];
+    // self.tittle="navItems";
 
 
 
-angular.module('webApp').directive('scrollFix', ['$window' ,function($window){
+
+
+    }]
+
+})
+.directive('scrollFix', ['$window' ,function($window){
 
   var $win = angular.element($window);
-    console.log("directive intitiated first part");
+    console.log("scrollfix Directive intiated");
 
   return {
-    restrict: 'E',
-    link: function($scope, element, attrs){
+    scope : {
+        fixed : '='
+    }
+    , restrict: 'EA'
+    , link: function($scope, element, attrs){
       var topClass = "fix-to-top";
       var offsetTop = element.prop('offsetTop');
 
 
 
-      $scope.fixedTop = false;
 
-      console.log("directive intitiated"+JSON.stringify($scope.fixedTop));
+
+      console.log("directive intitiated"+JSON.stringify($scope.fixed));
 
       $win.on('scroll',function(){
         if($window.pageYOffset >= offsetTop){
           element.addClass(topClass);
-          console.log("topClass");
-          $scope.fixedTop = true;
-          console.log("directive intitiated"+JSON.stringify($scope.fixedTop));
+          $scope.fixed = true;
 
-        } else{
+
+
+
+
+
+        } else{  
           element.removeClass(topClass);
-            console.log("remove topClass");
-              $scope.fixedTop = false;
-              console.log("directive intitiated"+JSON.stringify($scope.fixedTop));
+            $scope.fixed = false;
+
+
         }
 
       });
@@ -67,7 +93,39 @@ angular.module('webApp').directive('scrollFix', ['$window' ,function($window){
     }
   }
 
+}])
+.directive('navMenu', ['$window' ,function($window){
+
+  var $win = angular.element($window);
+  console.log("navMenu Directive intiated");
+
+  return {
+    scope: {
+      items : '='
+    }
+    , restrict: 'EAC'
+    , templateUrl: links.templatesBasePath + 'navMenu.tpl.html'
+    , link: function(scope, element, attrs){
+      // $timeout(function(){
+      //             console.log(element[0].querySelector('.md-button'));
+      //            });
+
+
+
+    // navLink.on('mouseover',function(){
+    // console.log("on mouse over");
+    // // var offsetLeft = element[0].offsetLeft;
+    // // console.log("element offset left:"+ offsetLeft);
+    //
+    // });
+
+
+    }
+  }
+
 }]);
+
+
 
 
 // this sorta copies the contents of the config file here
