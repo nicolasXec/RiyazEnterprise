@@ -49,7 +49,10 @@ vrentalApp.config(['$locationProvider', '$routeProvider'
         when('/location', {
            template: '<locations></locations>'
         }).
-        otherwise('/home');
+        when('/contact', {
+           template: '<contact></contact>'
+        }).
+        otherwise('/home');  
 
   console.log('config');
 
