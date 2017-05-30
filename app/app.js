@@ -15,6 +15,8 @@ console.log('the entry point');
 
 //user defined components
 require('./home/home.component.js');
+require('./contact/contact.component.js');
+require('./storeLocations/storeLocations.component.js')
 
 var links = require('./common/links.js');
 
@@ -22,7 +24,9 @@ var links = require('./common/links.js');
 var vrentalApp = angular.module('webApp', [
 
   // compoents modules
-   'homeM'
+    'homeM'
+  , 'contactM'
+  , 'storeLocationsM'
 
   //Material devDependencies
   , 'ngAnimate'
@@ -38,7 +42,7 @@ var vrentalApp = angular.module('webApp', [
 ]);
 
 angular.module('webApp').component('app', {
-    template:"<body><home></home></body>"
+    template:"<body><locations></locations></body>"
    ,controller: [ '$scope'
     , function($scope ){
       console.log("main App controller");
