@@ -3,6 +3,7 @@
 //vendor imports
 var angular = require('angular');
 
+require('angular-route');
 require('angular-material');
 require('angular-animate');
 require('angular-aria');
@@ -29,6 +30,7 @@ var vrentalApp = angular.module('webApp', [
   , 'storeLocationsM'
 
   //Material devDependencies
+  , 'ngRoute'
   , 'ngAnimate'
   , 'ngAria'
   , 'ngMaterial'
@@ -41,19 +43,38 @@ var vrentalApp = angular.module('webApp', [
 
 ]);
 
-angular.module('webApp').component('app', {
-    template:"<body><locations></locations></body>"
-   ,controller: [ '$scope'
-    , function($scope ){
-      console.log("main App controller");
+vrentalApp.config(['$locationProvider', '$routeProvider'
+      , function($locationProvider, $routeProvider){
 
-      var self = this;
+   $locationProvider.hashPrefix('!');
 
-    //   self.navItems = [
-    //     {name : "product", Type : true}
-    //   , {name : "About us", Type : false}
-    // ];
-    // self.tittle="navItems";
+   //router configs
+   $routeProvider.
+        when('/home', {
+          template: '<home></home>'
+        }).
+        when('/location', {
+           template: '<locations></locations>'
+        }).
+        otherwise('/home');
+
+  console.log('config');
+
+}]);
+
+// angular.module('webApp').component('app', {
+//     template:"<body><locations></locations></body>"
+//    ,controller: [ '$scope'
+//     , function($scope ){
+//       console.log("main App controller");
+
+//       var self = this;
+
+//     //   self.navItems = [
+//     //     {name : "product", Type : true}
+//     //   , {name : "About us", Type : false}
+//     // ];
+//     // self.tittle="navItems";
 
 
 
@@ -63,10 +84,10 @@ angular.module('webApp').component('app', {
 
 
 
-    }]
+//     }]
 
-})
-.directive('scrollFix', ['$window' ,function($window){
+// })
+vrentalApp.directive('scrollFix', ['$window' ,function($window){
 
   var $win = angular.element($window);
     console.log("scrollfix Directive intiated");
