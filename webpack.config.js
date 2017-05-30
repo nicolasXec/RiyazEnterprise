@@ -35,19 +35,20 @@ module.exports = {
    )
    //compiler options
    ,new webpack.optimize.UglifyJsPlugin({
-         compress: devMode?false:true
+         compress: devMode?false:false
         ,sourceMap: devMode?false:false
         ,drop_console: devMode?false:true
-        ,beautify: devMode?true:false
+        ,beautify: devMode?false:false
         ,comments: devMode?true:false //preserve comments
-        ,mangle: {
-             // Don't mangle $
-             except: ['$']
-             // Don't care about IE8
-            ,screw_ie8 : true
-            // Don't mangle function names
-            ,keep_fnames: true
-        }
+        ,mangle:false
+        // ,mangle: {
+        //     //  // Don't mangle $
+        //     //  except: ['$']
+        //     //  // Don't care about IE8
+        //     // ,screw_ie8 : true
+        //     // // Don't mangle function names
+        //     // ,keep_fnames: true
+        // }
    })
  ]
 };

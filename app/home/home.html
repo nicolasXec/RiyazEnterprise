@@ -4,6 +4,7 @@
                <md-icon aria-label="Menu" class="material-icons text-white">expand_less</md-icon>
   </md-button>
 </div>
+<md-button class='signupbtn' ng-click='$ctrl.showUserMenu($event)'>click me</md-button>
 
 <div class="menu-panel">
   <div class="row m-0" >
@@ -12,7 +13,7 @@
 <md-divider></md-divider>
       <md-list class="panel-sub-menu-nav-container">
 
-            <md-list-item  ng-click="$ctrl.navClicked()">
+            <md-list-item  ng-click="$ctrl.showUserMenu($event)">
        <span class="panel-sub-menu-nav">MORE INFO</span>
      </md-list-item>
 

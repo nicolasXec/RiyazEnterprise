@@ -2,9 +2,11 @@
 
 //vendor imports
 var angular = require('angular');
-require('angular-animate');
+
 require('angular-material');
+require('angular-animate');
 require('angular-aria');
+
 
 // var ngTouch = require('angular-touch');
 // var carousel  = require('angular-carousel');
@@ -18,22 +20,27 @@ var links = require('./common/links.js');
 
 
 var vrentalApp = angular.module('webApp', [
-  //Material devDependencies
 
-  , 'ngMaterial'
+  // compoents modules
+   'homeM'
+
+  //Material devDependencies
   , 'ngAnimate'
   , 'ngAria'
+  , 'ngMaterial'
+
+
 
   //other dev dependencies
 
 
-  // compoents modules
-  ,'homeM'
+
 ]);
 
 angular.module('webApp').component('app', {
     template:"<home></home>"
-   ,controller: ["$scope" , function($scope){
+   ,controller: [ '$scope'
+    , function($scope ){
       console.log("main App controller");
 
       var self = this;
@@ -43,6 +50,10 @@ angular.module('webApp').component('app', {
     //   , {name : "About us", Type : false}
     // ];
     // self.tittle="navItems";
+
+ 
+
+
 
 
 
@@ -81,7 +92,7 @@ angular.module('webApp').component('app', {
 
 
 
-        } else{  
+        } else{
           element.removeClass(topClass);
             $scope.fixed = false;
 
