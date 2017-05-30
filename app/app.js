@@ -38,7 +38,7 @@ var vrentalApp = angular.module('webApp', [
 ]);
 
 angular.module('webApp').component('app', {
-    template:"<home></home>"
+    template:"<body><home></home></body>"
    ,controller: [ '$scope'
     , function($scope ){
       console.log("main App controller");
@@ -51,7 +51,7 @@ angular.module('webApp').component('app', {
     // ];
     // self.tittle="navItems";
 
- 
+
 
 
 
@@ -115,8 +115,122 @@ angular.module('webApp').component('app', {
       items : '='
     }
     , restrict: 'EAC'
+    , controllerAs : 'ctrl'
+    , controller: ['$mdPanel' , function($mdPanel){
+
+      console.log("directive controller intiated yaa");
+
+
+      var self = this;
+
+      self._mdPanel = $mdPanel;
+
+      //EOC User Menu section
+      self.userMenuItems = [
+          {id:1, name:'Settings'},
+          {id:2, name:'My bookings'},
+          {id:3, name:'Help center'},
+          {id:4, name: 'Log off'}
+      ];
+
+      function menuController(mdPanelRef){
+          var _self  = this;
+
+
+
+                  _self.click = function (item){
+                      console.log('click Event' + JSON.stringify(item));
+
+                      _self.mdPanelRef.close();
+
+                      if(item.id === 4){
+                          console.log('logout');
+                          self.logout();
+                      }
+
+                  };
+           self.closeUserMenu = function(){
+               console.log("close call init");
+              _self.mdPanelRef.close()
+                      .then(function(){
+                        console.log("panel closed");
+                        self.panelOpened = false;
+                      });
+
+           };
+
+
+
+
+
+      };
+
+      var position = self._mdPanel.newPanelPosition()
+  .relativeTo('.nav-link-btn')
+  .addPanelPosition(self._mdPanel.xPosition.CENTER, self._mdPanel.yPosition.BELOW)
+  .withOffsetY('18px');
+
+
+
+      self.userMenuConfig = {
+              attachTo: angular.element(document.getElementsByClassName("wrapper")),
+              controller: menuController,
+              controllerAs: 'ctrl',
+              templateUrl: links.templatesBasePath + 'panel.tmpl.html',
+              panelClass: 'menu-panel',
+              position: position,
+              locals: {
+                  'selected': self.selected,
+                  'userMenuItems': self.userMenuItems
+              },
+              //openFrom: ev,
+              clickOutsideToClose: true,
+              escapeToClose: true,
+              focusOnOpen: false,
+              zIndex: 4000
+          };
+
+      self.selected = {selectedItem: 'Settings'};
+
+      self.showUserMenu = function (ev) {
+
+
+
+          self.userMenuConfig.openFrom = ev;
+
+        var panelOpen =  self._mdPanel.open(self.userMenuConfig);
+        panelOpen.then(function(){
+          self.panelOpened = true;
+          console.log("panel opened");
+        });
+
+      };
+
+
+      self.close = function(){
+          console.log("temporary close call");
+          if (self.panelOpened)
+          {
+            self.closeUserMenu();
+
+          }
+      }
+
+
+
+
+
+
+      //EOC user menu section
+
+    }]
     , templateUrl: links.templatesBasePath + 'navMenu.tpl.html'
-    , link: function(scope, element, attrs){
+    , link: function(scope, element, attrs , ctrl){
+
+      $win.on('click',function(){
+        console.log("window clicked yay");
+        ctrl.close();
+      });
       // $timeout(function(){
       //             console.log(element[0].querySelector('.md-button'));
       //            });

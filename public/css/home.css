@@ -6,14 +6,18 @@
     z-index: 55;
 }
 
-.menu-panel{
+.fab-fix-chat-btn{
   position: fixed;
+  bottom: 88px;
+  right: 16px;
+    z-index: 55;
+}
+
+.menu-panel{
+
     background-color: white;
-    top: 9em;
-    left: 28%;
     box-shadow: 1px 1px 3px 0px;
-    padding:4px;
-    z-index:56;
+    /*padding:4px;*/
 }
 .panel-sub-menu-nav{
   margin: 0px;
