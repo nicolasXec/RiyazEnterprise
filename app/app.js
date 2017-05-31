@@ -12,6 +12,8 @@ require('angular-aria');
 // var ngTouch = require('angular-touch');
 // var carousel  = require('angular-carousel');
 
+var links = require('./common/links.js');
+
 console.log('the entry point');
 
 //user defined components
@@ -21,29 +23,20 @@ require('./storeLocations/storeLocations.component.js');
 require('./products/products.component.js');
 
 
-var links = require('./common/links.js');
+
 
 
 var vrentalApp = angular.module('webApp', [
-
-  // compoents modules
+  // user components
     'homeM'
   , 'contactM'
   , 'storeLocationsM'
   , 'productsM'
-
   //Material devDependencies
   , 'ngRoute'
   , 'ngAnimate'
   , 'ngAria'
   , 'ngMaterial'
-
-
-
-  //other dev dependencies
-
-
-
 ]);
 
 vrentalApp.config(['$locationProvider', '$routeProvider'
