@@ -19,7 +19,9 @@ console.log('the entry point');
 //user defined components
 require('./home/home.component.js');
 require('./contact/contact.component.js');
-require('./storeLocations/storeLocations.component.js')
+require('./storeLocations/storeLocations.component.js');
+require('./products/products.component.js');
+
 
 
 
@@ -29,6 +31,7 @@ var vrentalApp = angular.module('webApp', [
     'homeM'
   , 'contactM'
   , 'storeLocationsM'
+  , 'productsM'
   //Material devDependencies
   , 'ngRoute'
   , 'ngAnimate'
@@ -52,7 +55,10 @@ vrentalApp.config(['$locationProvider', '$routeProvider'
         when('/contact', {
            template: '<contact></contact>'
         }).
-        otherwise('/home');  
+        when('/product', {
+           template: '<product></product>'
+        }).
+        otherwise('/home');
 
   console.log('config');
 
