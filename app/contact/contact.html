@@ -66,31 +66,25 @@
     <hr class="invisible" />
     <md-content class="md-padding" style="background-color:white;">
 <div class="container">
-  <div class="row">
-    <div class="col-md-4 offset-md-1">
-      <h5>Help Topics</h5>
-      <hr />
-      <ul class="list-unstyled">
-  <li>Frequently Asked Questions</li>
-  <li>Before I buy</li>
-  <li>Payments</li>
-  <li>Warrenty and post Delivery Service</li>
-  <li>My Order Queries</li>
-  <li>Elephants</li>
+  <div class="">
 
-</ul>
-    </div>
-    <div class="col-md-6">
-        <h5>Contact us</h5>
+
+  <div class="row">
+
+    <div class="col-md-8 offset-md-2">
+        <span style='font-size: 28px; font-family: "Mr Eaves XL Modern", sans-serif; font-weight:400;'>Contact us</span>
 <hr />
         <dl>
 <dt>Email</dt>
 <dd>For product, order related queries and pretty much anything else, write to hello@urbanladder.com</dd>
+<br />
 <dt>Customer Support</dt>
-<dd>080-67400200
+<dd>080-67400200<br />
 (Monday–Saturday, 10 AM to 8 PM)</dd>
+<br />
 <dt>Bulk Orders</dt>
 <dd>If you are a property manager, an architect, builder, designer or any business enterprise looking to buy in bulk for your hotel, office or any other property, we'd love to help! Email us at bulk@urbanladder.com</dd>
+<br />
 <dt>Partnerships</dt>
 <dd>If you’re an interior designer or an architect, the Design Network is for you. Partner with us, and discover an easier way to set up gorgeous homes. Click here to sign up!</dd>
 
@@ -98,6 +92,63 @@
     </div>
 
   </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div layout="row" layout-align="end center">
+        <div >
+
+          <md-button class="md-icon-button" aria-label="More">
+       <md-icon aria-label="Menu" class="material-icons " >close</md-icon>
+      </md-button>
+
+        </div>
+
+      </div>
+
+      <h4 class="text-md-center" style="font-weight: lighter;
+    font-size: 34px;">Inqiry Form</h4>
+
+      <form name="userForm">
+
+
+             <div layout-gt-sm="row">
+               <md-input-container class="md-block" flex-gt-sm>
+                 <label>First name</label>
+                 <input ng-model="user.firstName">
+               </md-input-container>
+
+               <md-input-container class="md-block" flex-gt-sm>
+                 <label>Long Last Name That Will Be Truncated And 3 Dots (Ellipsis) Will Appear At The End</label>
+                 <input ng-model="theMax">
+               </md-input-container>
+             </div>
+
+             <md-input-container class="md-block">
+               <label>Phone</label>
+               <input ng-model="user.address">
+             </md-input-container>
+
+             <md-input-container class="md-block">
+               <label>Email</label>
+               <input ng-model="user.address">
+             </md-input-container>
+
+
+
+             <md-input-container class="md-block">
+               <label>Address</label>
+               <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+             </md-input-container>
+
+
+
+             <md-button class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Clear Form</md-button>
+             <md-button class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Send us Your inquiry</md-button>
+
+           </form>
+    </div>
+  </div>
+</div>
 </div>
 
 
