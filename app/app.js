@@ -246,4 +246,21 @@ app.directive('navMenu', ['$q', '$window', function ($q, $window) {
 
     }
   }
+
 }]);
+
+
+app.controller('menuController', function menuController(mdPanelRef) {
+  var _self = this;
+
+  //common controller for all menu items
+  _self.closeUserMenu = function () {
+    console.log("close call init");
+    _self.mdPanelRef.close()
+      .then(function () {
+        console.log("panel closed");
+        self.panelOpened = false;
+      });
+
+  };
+});
