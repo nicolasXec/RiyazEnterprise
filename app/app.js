@@ -17,7 +17,7 @@ console.log('the entry point');
 
 //user defined components
 require('./components/home/home.component.js');
-require('./contact/contact.component.js');
+require('./components/contact/contact.component.js');
 require('./components/storeLocations/storeLocations.component.js');
 require('./components/products/products.component.js');
 require('./components/footer/footer.component.js');
@@ -49,7 +49,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
     //self.keepMenuOpenFlag = false;
 
-   //BOC route configuration
+   //BOC route configuration 
     $locationProvider.hashPrefix('!');
 
     $routeProvider.
