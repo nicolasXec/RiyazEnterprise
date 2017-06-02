@@ -4,12 +4,6 @@
   </md-button>
 </div>
 
-<div class="fab-fix-chat-btn">
-  <md-button class="md-fab">
-    <md-icon aria-label="Menu" class="material-icons text-white">chat</md-icon>
-  </md-button>
-</div>
-
 <div layout="column" class="wrapper" style="background-color:#ebeff1;">
 <div flex class="header-color header">
   <div layout="row">
@@ -40,7 +34,7 @@
     <div class="col-md-2 offset-md-1 ">
       <img src="images/logo.png" ng-show="$ctrl.fixedNav" alt="no image found" class="logo-in-fixed-nav">
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" style="z-index:81">
       <nav-menu items="$ctrl.navItems" class="nav-link-btn"></nav-menu>
     </div>
 
@@ -50,7 +44,7 @@
 
 <!-- <h1>{{ $ctrl.tittle }}</h1> -->
 <div flex>
-  <div class="home-page-banner">
+  <div class="home-page-banner" >
   </div>
 </div>
 
@@ -58,7 +52,7 @@
   <hr class="invisible" />
   <md-content class="md-padding" style="background-color:white;">
 <div class="text-md-center">
-  <span class="card-item-tittle ">Shop by </span>
+  <span class="card-item-tittle ">View by category</span>
 </div>
 
 <div layout="row" layout-align="space-between center">
@@ -78,7 +72,7 @@
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
-          <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+          <md-button class="md-raised md-warn card-item-btn">Show</md-button>
         </md-card-content>
       </md-card>
     </div>
@@ -115,7 +109,7 @@
   <md-card-content>
 
 
-    <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+    <md-button class="md-raised md-warn card-item-btn">Show</md-button>
   </md-card-content>
 
 </md-card>
@@ -144,7 +138,7 @@
 
 <md-content class="md-padding" style="background-color:white;">
 <div class="text-md-center">
-  <span class="card-item-tittle ">Shop by </span>
+  <span class="card-item-tittle ">View by brand</span>
 </div>
 
 
@@ -162,14 +156,14 @@
         <img ng-src="images/1.jpg" class="md-card-image" alt="Washed Out">
         <md-card-title>
           <md-card-title-text>
-            <span class="md-headline">Living Room</span>
+            <span class="md-headline">Hindware</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
 
 
 
-          <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+          <md-button class="md-raised md-warn card-item-btn">Show</md-button>
         </md-card-content>
 
       </md-card>
@@ -182,13 +176,13 @@
   <img ng-src="images/2.jpg" class="md-card-image" alt="Washed Out">
   <md-card-title>
     <md-card-title-text>
-      <span class="md-headline">Kitchen</span>
+      <span class="md-headline">Jaqur</span>
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
 
 
-    <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+    <md-button class="md-raised md-warn card-item-btn">Show</md-button>
 
 
   </md-card-content>
@@ -203,13 +197,13 @@
   <img ng-src="images/3.jpg" class="md-card-image" alt="Washed Out">
   <md-card-title>
     <md-card-title-text>
-      <span class="md-headline">Bathroom</span>
+      <span class="md-headline">Bayern</span>
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
 
 
-    <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+    <md-button class="md-raised md-warn card-item-btn">Show</md-button>
   </md-card-content>
 
 </md-card>
@@ -217,20 +211,13 @@
 </div>
 </div>
 
-
-
 <div flex="5" class="text-md-right">
   <md-button class="md-fab md-mini md-primary md-hue-2 " aria-label="Eat cake">
     <md-icon aria-label="Menu" class="material-icons ">navigate_next</md-icon>
   </md-button>
 
-
 </div>
 </div>
-
-
-
-
 
 </md-content>
 </div>
@@ -238,23 +225,22 @@
 <div flex class="footer-color footer">
   <div class="container ">
     <div class="row pb-3 pt-3">
-      <div class="col-md-3 offset-md-2">
+      <div class="col-md-4 offset-md-2">
         <p class=" h5 mt-3 mb-3">
           Company
         </p>
         <div class="row">
-          <div class="col-md-5">
+          <div class="col-md-4">
             <ul class="list-unstyled">
-              <li class=" footer-links ">About us </li>
-              <li class=" footer-links">Help Center</li>
-              <li class=" footer-links">Site Map</li>
+              <li><a class="footer-links" href="#">About us</a></li>
+              <li><a class="footer-links" href="#">Contact us</a></li>
+              <li><a class="footer-links" href="#">Location</a></li>
             </ul>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-5">
             <ul class="list-unstyled">
-              <li class=" footer-links">Careers</li>
-              <li class=" footer-links">Team</li>
-              <li class=" footer-links">Privacy Policy</li>
+              <li><a class="footer-links" href="#">Product Categories</a></li>
+              <li><a class="footer-links" href="#">Featured brands</a></li>
             </ul>
           </div>
         </div>
@@ -266,20 +252,19 @@
         <div class="row">
           <div class="col-md-6">
             <ul class="list-unstyled">
-              <li class=" footer-links">Payment & security </li>
-              <li class=" footer-links">Terms of use</li>
-              <li class=" footer-links">Terms of offer</li>
+              <li class=" footer-links"><a class="footer-links" href="#">FAQ</a></li>
+              <li class=" footer-links"><a class="footer-links" href="#">Privacy Policy</a></li>
+              <li class=" footer-links"><a class="footer-links" href="#">Terms of use</a></li>
             </ul>
           </div>
           <div class="col-md-5">
             <ul class="list-unstyled">
-              <li class=" footer-links">Contact us</li>
-              <li class=" footer-links">Visit us</li>
-              <li class=" footer-links">Buy in Bulk</li>
+              <li class=" footer-links"><a class="footer-links" href="#">Bulk orders</a></li>
+              <li class=" footer-links"><a class="footer-links" href="#">Feedback</a></li>
+              <li class=" footer-links"><a class="footer-links" href="#">Complaints</a></li>
             </ul>
           </div>
         </div>
-
 
       </div>
       <div class="col-md-3">

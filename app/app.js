@@ -39,6 +39,8 @@ var app = angular.module('webApp', [
 app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
   , function ($locationProvider, $routeProvider, $mdPanelProvider) {
 
+    //self.keepMenuOpenFlag = false;
+
    //BOC route configuration
     $locationProvider.hashPrefix('!');
 
@@ -60,12 +62,31 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
 
     //BOC menu configuration
-    function menuController(mdPanelRef) {
 
-      var _self = this;
+    $mdPanelProvider.definePreset('menuPreset', {
+      attachTo: angular.element(document.body),
+      controllerAs: 'ctrl',
+      templateUrl: links.templatesBasePath + 'panel.tmpl.html',
+      panelClass: 'menu-panel',
+      clickOutsideToClose: true,
+      escapeToClose: true,
+      focusOnOpen: false,
+      zIndex:80,
+      propagateContainerEvents: false,
+      groupName: 'menus',
+      controller: function(mdPanelRef){
+        console.log('menu controller init');
+
+         var _self = this;
+
+      _self.panelClick = function ($event) {
+        console.log('menu click event ');
+        $event.stopPropagation();
+        $event.preventDefault();
+      }
 
       //common controller for all menu items
-      _self.closeUserMenu = function () {
+      _self.closeUserMenu = function ($event) {
         console.log("close call init");
         _self.mdPanelRef.close()
           .then(function () {
@@ -74,20 +95,8 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
           });
 
       };
-    };
 
-    $mdPanelProvider.definePreset('menuPreset', {
-      attachTo: angular.element(document.body),
-      controller: menuController,
-      controllerAs: 'ctrl',
-      templateUrl: links.templatesBasePath + 'panel.tmpl.html',
-      panelClass: 'menu-panel',
-      clickOutsideToClose: true,
-      escapeToClose: true,
-      focusOnOpen: false,
-      zIndex: 100,
-      propagateContainerEvents: true,
-      groupName: 'menus'
+      }
     });
     //EOC menu configuration
 
@@ -125,7 +134,7 @@ app.directive('scrollFix', ['$window', function ($window) {
 
 }]);
 
-app.directive('navMenu', ['$q', '$window', function ($q, $window) {
+app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $location) {
 
   console.log("navMenu Directive intiated");
 
@@ -136,12 +145,11 @@ app.directive('navMenu', ['$q', '$window', function ($q, $window) {
     }
     , templateUrl: links.templatesBasePath + 'navMenu.tpl.html'
     , controllerAs: 'ctrl'
-    , controller: ['$mdPanel', function ($mdPanel) {
+    , controller: ['$mdPanel', '$scope' , function ($mdPanel, $scope) {
 
       console.log("directive controller intiated yaa");
 
       var self = this;
-
 
       // BOC user menu
       self.isMenuOpen = false;
@@ -155,13 +163,30 @@ app.directive('navMenu', ['$q', '$window', function ($q, $window) {
       self.keepMenuOpenFlag = false;
 
       //menu item click function
-      self.showUserMenu = function ($event, item) {
+      self.menuClick = function ($event, item) {
 
         //if menu does not have items return
         // and set the keepMenuOpenFlag to false, to let the menu close
         //when close intercept promise is resolved
         if (!item.hasCollps) {
           self.keepMenuOpenFlag = false;
+
+          //close the menu
+          //TODO this throws exception when panel does not exits, which is the first time
+          self.mdPanelRef.close();
+
+          //redirect
+          if(item.id == 3){
+            //store locations
+             $location.path('/location');
+          }else if(item.id == 4){
+            //contact us
+             $location.path('/contact');
+          }else if(item.id == 5){
+            //about us
+             //$location.path('/');
+          }
+
           return;
         } else {
           self.keepMenuOpenFlag = true;
@@ -169,8 +194,8 @@ app.directive('navMenu', ['$q', '$window', function ($q, $window) {
 
         //stop the event propagation to the "window click" event, which 
         //sets self.keepMenuOpenFlag = false;
-        $event.stopPropagation();
-        $event.preventDefault();
+        //$event.stopPropagation();
+        //$event.preventDefault();
 
         //make panel postion object
         var pos = self._mdPanel.newPanelPosition()
@@ -189,6 +214,7 @@ app.directive('navMenu', ['$q', '$window', function ($q, $window) {
         //a function that returns promise, that rejects when self.keepMenuOpenFlag is true
         var closePromise = function () {
           return $q(function (resolve, reject) {
+            console.log('promise ' + self.keepMenuOpenFlag);
             if (self.keepMenuOpenFlag == true) {
               reject();
               //dont allow close of panel
@@ -203,14 +229,14 @@ app.directive('navMenu', ['$q', '$window', function ($q, $window) {
         }
 
         //set the close interceptor, that can reject the panel close opertation
-        self.mdPanelRef.registerInterceptor($mdPanel.interceptorTypes.CLOSE, closePromise);
+       // self.mdPanelRef.registerInterceptor($mdPanel.interceptorTypes.CLOSE, closePromise);
 
         //if panel is not attached, then
         // > on attach, show the panel
         //else
         // > show the panel
         if (!self.mdPanelRef.isAttached) {
-
+          console.log('panel not attached');
           self.mdPanelRef.attach()
           .then(function () {
 
@@ -223,6 +249,7 @@ app.directive('navMenu', ['$q', '$window', function ($q, $window) {
 
         } else {
 
+          console.log('show panel directly');
           self.mdPanelRef.updateAnimation(panelAnimation);
           self.mdPanelRef.updatePosition(pos);
           self.mdPanelRef.show();
@@ -237,30 +264,17 @@ app.directive('navMenu', ['$q', '$window', function ($q, $window) {
     , link: function (scope, element, attrs, ctrl) {
 
 
+      console.log('link of menu directive');
       var $win = angular.element($window);
-      $win.on('click', function($event){
-        //read description, above in controller, where its declared
-        ctrl.keepMenuOpenFlag = false;
-      });
+      // $win.on('click', function($event){
+      //   //read description, above in controller, where its declared
+      //   console.log('win click stop event proppgation ' + $event.isPropagationStopped);
+
+      //   ctrl.keepMenuOpenFlag = false;
+      // });
 
 
     }
   }
 
 }]);
-
-
-app.controller('menuController', function menuController(mdPanelRef) {
-  var _self = this;
-
-  //common controller for all menu items
-  _self.closeUserMenu = function () {
-    console.log("close call init");
-    _self.mdPanelRef.close()
-      .then(function () {
-        console.log("panel closed");
-        self.panelOpened = false;
-      });
-
-  };
-});
