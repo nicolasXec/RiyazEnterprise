@@ -16,12 +16,12 @@ var links = require('./common/links.js');
 console.log('the entry point');
 
 //user defined components
-require('./home/home.component.js');
+require('./components/home/home.component.js');
 require('./contact/contact.component.js');
-require('./storeLocations/storeLocations.component.js');
-require('./products/products.component.js');
+require('./components/storeLocations/storeLocations.component.js');
+require('./components/products/products.component.js');
 require('./components/footer/footer.component.js');
-
+require('./components/header/header.component.js');
 
 var app = angular.module('webApp', [
   // user components
@@ -30,6 +30,7 @@ var app = angular.module('webApp', [
   , 'storeLocationsM'
   , 'productsM'
   , 'footerM'
+  , 'headerM'
   //Material devDependencies
   , 'ngRoute'
   , 'ngAnimate'
