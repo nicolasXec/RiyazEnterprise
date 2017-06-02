@@ -22,15 +22,17 @@ require('./components/storeLocations/storeLocations.component.js');
 require('./components/products/products.component.js');
 require('./components/footer/footer.component.js');
 require('./components/header/header.component.js');
+require('./components/productDetail/productDetail.component.js');
 
 var app = angular.module('webApp', [
-  // user components 
+  // user components
   'homeM'
   , 'contactM'
   , 'storeLocationsM'
   , 'productsM'
   , 'footerM'
   , 'headerM'
+  , 'productDetailM'
   //Material devDependencies
   , 'ngRoute'
   , 'ngAnimate'
@@ -49,7 +51,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
     //self.keepMenuOpenFlag = false;
 
-   //BOC route configuration 
+   //BOC route configuration
     $locationProvider.hashPrefix('!');
 
     $routeProvider.
@@ -64,6 +66,9 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
       }).
       when('/products', {
         template: '<products></products>'
+      }).
+      when('/productD', {
+        template: '<product-detail></product-detail>'
       }).
       otherwise('/home');
       //EOC route configuration

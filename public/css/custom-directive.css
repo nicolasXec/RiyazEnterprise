@@ -54,7 +54,7 @@ font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
   padding: 5px;
   display: inline;
   top: 67px;
-  z-index: 44;
+  z-index: 39;
 }
 
 .card-item-tag::before{
