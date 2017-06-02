@@ -8,14 +8,7 @@ var homeModule  = angular.module('homeM', [])
         , function homeController ($scope, $mdPanel) {
             console.log("hello i am home controller");
 
-
-
             var self = this;
-
-
-
-
-
 
             self.fixedNav = false;
 
@@ -23,17 +16,13 @@ var homeModule  = angular.module('homeM', [])
               console.log('nav link clicked');
             };
 
-
-
-
             self.navItems = [
-                {name : "Product", hasCollps : true, bold : false }
-              , {name : "Featured Brands", hasCollps : true, bold : true }
-              , {name : "Store Locations", hasCollps : true, bold : false }
-              , {name : "Contact Us", hasCollps : false, bold : false }
-              , {name : "About Us", hasCollps : false, bold : false }
+                {name : "Product", hasCollps : true, active : false, id:1 }
+              , {name : "Featured Brands", hasCollps : true, active : true, id:2 }
+              , {name : "Store Location", hasCollps : false, active : false, id:3 }
+              , {name : "Contact Us", hasCollps : false, active : false, id:4 }
+              , {name : "About Us", hasCollps : false, active : false, id:5 }
             ];
-
 
           }]
 

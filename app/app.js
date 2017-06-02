@@ -8,7 +8,6 @@ require('angular-material');
 require('angular-animate');
 require('angular-aria');
 
-
 // var ngTouch = require('angular-touch');
 // var carousel  = require('angular-carousel');
 
@@ -22,13 +21,9 @@ require('./contact/contact.component.js');
 require('./storeLocations/storeLocations.component.js');
 require('./products/products.component.js');
 
-
-
-
-
-var vrentalApp = angular.module('webApp', [
+var app = angular.module('webApp', [
   // user components
-    'homeM'
+  'homeM'
   , 'contactM'
   , 'storeLocationsM'
   , 'productsM'
@@ -39,91 +34,88 @@ var vrentalApp = angular.module('webApp', [
   , 'ngMaterial'
 ]);
 
-vrentalApp.config(['$locationProvider', '$routeProvider'
-      , function($locationProvider, $routeProvider){
 
-   $locationProvider.hashPrefix('!');
+//route config section
+app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
+  , function ($locationProvider, $routeProvider, $mdPanelProvider) {
 
-   //router configs
-   $routeProvider.
-        when('/home', {
-          template: '<home></home>'
-        }).
-        when('/location', {
-           template: '<locations></locations>'
-        }).
-        when('/contact', {
-           template: '<contact></contact>'
-        }).
-        when('/product', {
-           template: '<product></product>'
-        }).
-        otherwise('/home');
+   //BOC route configuration
+    $locationProvider.hashPrefix('!');
 
-  console.log('config');
-
-}]);
-
-// angular.module('webApp').component('app', {
-//     template:"<body><locations></locations></body>"
-//    ,controller: [ '$scope'
-//     , function($scope ){
-//       console.log("main App controller");
-
-//       var self = this;
-
-//     //   self.navItems = [
-//     //     {name : "product", Type : true}
-//     //   , {name : "About us", Type : false}
-//     // ];
-//     // self.tittle="navItems";
+    $routeProvider.
+      when('/home', {
+        template: '<home></home>'
+      }).
+      when('/location', {
+        template: '<locations></locations>'
+      }).
+      when('/contact', {
+        template: '<contact></contact>'
+      }).
+      when('/product', {
+        template: '<product></product>'
+      }).
+      otherwise('/home');
+      //EOC route configuration
 
 
+    //BOC menu configuration
+    function menuController(mdPanelRef) {
 
+      var _self = this;
 
+      //common controller for all menu items
+      _self.closeUserMenu = function () {
+        console.log("close call init");
+        _self.mdPanelRef.close()
+          .then(function () {
+            console.log("panel closed");
+            self.panelOpened = false;
+          });
 
+      };
+    };
 
+    $mdPanelProvider.definePreset('menuPreset', {
+      attachTo: angular.element(document.body),
+      controller: menuController,
+      controllerAs: 'ctrl',
+      templateUrl: links.templatesBasePath + 'panel.tmpl.html',
+      panelClass: 'menu-panel',
+      clickOutsideToClose: true,
+      escapeToClose: true,
+      focusOnOpen: false,
+      zIndex: 100,
+      propagateContainerEvents: true,
+      groupName: 'menus'
+    });
+    //EOC menu configuration
 
+  }]);
 
-
-//     }]
-
-// })
-vrentalApp.directive('scrollFix', ['$window' ,function($window){
+app.directive('scrollFix', ['$window', function ($window) {
 
   var $win = angular.element($window);
-    console.log("scrollfix Directive intiated");
+  console.log("scrollfix Directive intiated");
 
   return {
-    scope : {
-        fixed : '='
+    scope: {
+      fixed: '='
     }
     , restrict: 'EA'
-    , link: function($scope, element, attrs){
+    , link: function ($scope, element, attrs) {
       var topClass = "fix-to-top";
       var offsetTop = element.prop('offsetTop');
 
+      console.log("directive intitiated" + JSON.stringify($scope.fixed));
 
-
-
-
-      console.log("directive intitiated"+JSON.stringify($scope.fixed));
-
-      $win.on('scroll',function(){
-        if($window.pageYOffset >= offsetTop){
+      $win.on('scroll', function () {
+        if ($window.pageYOffset >= offsetTop) {
           element.addClass(topClass);
           $scope.fixed = true;
-
-
-
-
-
-
-        } else{
+        } else {
           element.removeClass(topClass);
-            $scope.fixed = false;
-
-
+          $scope.fixed = false;
         }
 
       });
@@ -131,145 +123,125 @@ vrentalApp.directive('scrollFix', ['$window' ,function($window){
     }
   }
 
-}])
-.directive('navMenu', ['$window' ,function($window){
+}]);
 
-  var $win = angular.element($window);
+app.directive('navMenu', ['$q', '$window', function ($q, $window) {
+
   console.log("navMenu Directive intiated");
 
   return {
-    scope: {
-      items : '='
+    restrict: 'EAC'
+    ,scope: {
+      items: '='
     }
-    , restrict: 'EAC'
-    , controllerAs : 'ctrl'
-    , controller: ['$mdPanel' , function($mdPanel){
+    , templateUrl: links.templatesBasePath + 'navMenu.tpl.html'
+    , controllerAs: 'ctrl'
+    , controller: ['$mdPanel', function ($mdPanel) {
 
       console.log("directive controller intiated yaa");
 
-
       var self = this;
 
+
+      // BOC user menu
+      self.isMenuOpen = false;
       self._mdPanel = $mdPanel;
+      self.mdPanelRef = self._mdPanel.create('menuPreset', {
+        id: 'menu'
+      });
 
-      //EOC User Menu section
-      self.userMenuItems = [
-          {id:1, name:'Settings'},
-          {id:2, name:'My bookings'},
-          {id:3, name:'Help center'},
-          {id:4, name: 'Log off'}
-      ];
+      //flag to keep menu open if set to true
+      //it return a reject when the close intercept promise resolves
+      self.keepMenuOpenFlag = false;
 
-      function menuController(mdPanelRef){
-          var _self  = this;
+      //menu item click function
+      self.showUserMenu = function ($event, item) {
 
+        //if menu does not have items return
+        // and set the keepMenuOpenFlag to false, to let the menu close
+        //when close intercept promise is resolved
+        if (!item.hasCollps) {
+          self.keepMenuOpenFlag = false;
+          return;
+        } else {
+          self.keepMenuOpenFlag = true;
+        }
 
+        //stop the event propagation to the "window click" event, which 
+        //sets self.keepMenuOpenFlag = false;
+        $event.stopPropagation();
+        $event.preventDefault();
 
-                  _self.click = function (item){
-                      console.log('click Event' + JSON.stringify(item));
+        //make panel postion object
+        var pos = self._mdPanel.newPanelPosition()
+          .relativeTo($event.currentTarget)
+          .addPanelPosition(self._mdPanel.xPosition.ALIGN_START
+          , self._mdPanel.yPosition.ALIGN_TOPS)
+          .withOffsetY('50px');
 
-                      _self.mdPanelRef.close();
+        //make panel animation object
+        var panelAnimation = $mdPanel.newPanelAnimation()
+          .openFrom($event.currentTarget)
+          .duration(280)
+          .closeTo($event.currentTarget)
+          .withAnimation($mdPanel.animation.FADE);
 
-                      if(item.id === 4){
-                          console.log('logout');
-                          self.logout();
-                      }
+        //a function that returns promise, that rejects when self.keepMenuOpenFlag is true
+        var closePromise = function () {
+          return $q(function (resolve, reject) {
+            if (self.keepMenuOpenFlag == true) {
+              reject();
+              //dont allow close of panel
+              //TODO an exception is thrown saying that reject is undefined
+              // how to implement reject to stop exception being thrown
+            } else {
+              resolve();
+              //proceed as usual
+            }
 
-                  };
-           self.closeUserMenu = function(){
-               console.log("close call init");
-              _self.mdPanelRef.close()
-                      .then(function(){
-                        console.log("panel closed");
-                        self.panelOpened = false;
-                      });
+          });
+        }
 
-           };
+        //set the close interceptor, that can reject the panel close opertation
+        self.mdPanelRef.registerInterceptor($mdPanel.interceptorTypes.CLOSE, closePromise);
 
+        //if panel is not attached, then
+        // > on attach, show the panel
+        //else
+        // > show the panel
+        if (!self.mdPanelRef.isAttached) {
 
+          self.mdPanelRef.attach()
+          .then(function () {
 
+              console.log('attaching menu panel');
+              self.mdPanelRef.updateAnimation(panelAnimation);
+              self.mdPanelRef.updatePosition(pos);
+              self.mdPanelRef.show();
 
+          });
+
+        } else {
+
+          self.mdPanelRef.updateAnimation(panelAnimation);
+          self.mdPanelRef.updatePosition(pos);
+          self.mdPanelRef.show();
+
+        }
 
       };
-
-      var position = self._mdPanel.newPanelPosition()
-  .relativeTo('.nav-link-btn')
-  .addPanelPosition(self._mdPanel.xPosition.CENTER, self._mdPanel.yPosition.BELOW)
-  .withOffsetY('18px');
-
-
-
-      self.userMenuConfig = {
-              attachTo: angular.element(document.getElementsByClassName("wrapper")),
-              controller: menuController,
-              controllerAs: 'ctrl',
-              templateUrl: links.templatesBasePath + 'panel.tmpl.html',
-              panelClass: 'menu-panel',
-              position: position,
-              locals: {
-                  'selected': self.selected,
-                  'userMenuItems': self.userMenuItems
-              },
-              //openFrom: ev,
-              clickOutsideToClose: true,
-              escapeToClose: true,
-              focusOnOpen: false,
-              zIndex: 4000
-          };
-
-      self.selected = {selectedItem: 'Settings'};
-
-      self.showUserMenu = function (ev) {
-
-
-
-          self.userMenuConfig.openFrom = ev;
-
-        var panelOpen =  self._mdPanel.open(self.userMenuConfig);
-        panelOpen.then(function(){
-          self.panelOpened = true;
-          console.log("panel opened");
-        });
-
-      };
-
-
-      self.close = function(){
-          console.log("temporary close call");
-          if (self.panelOpened)
-          {
-            self.closeUserMenu();
-
-          }
-      }
-
-
-
-
-
-
       //EOC user menu section
 
+
     }]
-    , templateUrl: links.templatesBasePath + 'navMenu.tpl.html'
-    , link: function(scope, element, attrs , ctrl){
+    , link: function (scope, element, attrs, ctrl) {
 
-      $win.on('click',function(){
-        console.log("window clicked yay");
-        ctrl.close();
+
+      var $win = angular.element($window);
+      $win.on('click', function($event){
+        //read description, above in controller, where its declared
+        ctrl.keepMenuOpenFlag = false;
       });
-      // $timeout(function(){
-      //             console.log(element[0].querySelector('.md-button'));
-      //            });
-
-
-
-    // navLink.on('mouseover',function(){
-    // console.log("on mouse over");
-    // // var offsetLeft = element[0].offsetLeft;
-    // // console.log("element offset left:"+ offsetLeft);
-    //
-    // });
 
 
     }
@@ -278,7 +250,17 @@ vrentalApp.directive('scrollFix', ['$window' ,function($window){
 }]);
 
 
+app.controller('menuController', function menuController(mdPanelRef) {
+  var _self = this;
 
+  //common controller for all menu items
+  _self.closeUserMenu = function () {
+    console.log("close call init");
+    _self.mdPanelRef.close()
+      .then(function () {
+        console.log("panel closed");
+        self.panelOpened = false;
+      });
 
-// this sorta copies the contents of the config file here
-//require('./app.config.js');
+  };
+});
