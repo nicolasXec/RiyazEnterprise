@@ -9,6 +9,10 @@
   box-shadow:1px 1px 6px -1px;
 }
 
+scroll-fix {
+  box-shadow: 1px 1px 11px -6px;
+}
+
 .nav-bar-contaienr{
     background-color:white;
 }
