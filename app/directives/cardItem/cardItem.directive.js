@@ -1,5 +1,7 @@
 
 
+var links = require("../../common/links.js");
+
 var webApp = angular.module('webApp');
 
 webApp.directive('cardItem', ['$window' ,function($window){
