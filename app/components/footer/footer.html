@@ -8,15 +8,16 @@
                 <div class="row">
                     <div class="col-md-4">
                         <ul class="list-unstyled">
-                            <li><a class="footer-links" href="#">About us</a></li>
-                            <li><a class="footer-links" href="#">Contact us</a></li>
-                            <li><a class="footer-links" href="#">Location</a></li>
+                            <li ng-click="$ctrl.go('/home')" class="footer-links">Home</li>
+                            <li ng-click="$ctrl.go('/home')" class="footer-links">About us</li>
+                            <li  ng-click="$ctrl.go('/contact')" class="footer-links">Contact us</li>
+                            <li  ng-click="$ctrl.go('/location')" class="footer-links">Location</li>
                         </ul>
                     </div>
                     <div class="col-md-5">
                         <ul class="list-unstyled">
-                            <li><a class="footer-links" href="#">Product Categories</a></li>
-                            <li><a class="footer-links" href="#">Featured brands</a></li>
+                            <li  ng-click="$ctrl.go('/products')" class="footer-links">Product Categories</li>
+                            <li  ng-click="$ctrl.go('/brands')" class="footer-links">Featured brands</li>
                         </ul>
                     </div>
                 </div>
@@ -28,16 +29,16 @@
                 <div class="row">
                     <div class="col-md-6">
                         <ul class="list-unstyled">
-                            <li class=" footer-links"><a class="footer-links" href="#">FAQ</a></li>
-                            <li class=" footer-links"><a class="footer-links" href="#">Privacy Policy</a></li>
-                            <li class=" footer-links"><a class="footer-links" href="#">Terms of use</a></li>
+                            <li  ng-click="$ctrl.go('/home')" class="footer-links">FAQ</li>
+                            <li  ng-click="$ctrl.go('/home')" class="footer-links">Privacy Policy</li>
+                            <li  ng-click="$ctrl.go('/home')" class="footer-links">Terms of use</li>
                         </ul>
                     </div>
                     <div class="col-md-5">
                         <ul class="list-unstyled">
-                            <li class=" footer-links"><a class="footer-links" href="#">Bulk orders</a></li>
-                            <li class=" footer-links"><a class="footer-links" href="#">Feedback</a></li>
-                            <li class=" footer-links"><a class="footer-links" href="#">Complaints</a></li>
+                            <li  ng-click="$ctrl.go('/home')" class="footer-links">Bulk orders</li>
+                            <li  ng-click="$ctrl.go('/home')" class="footer-links">Feedback</li>
+                            <li  ng-click="$ctrl.go('/home')" class="footer-links">Complaints</li>
                         </ul>
                     </div>
                 </div>

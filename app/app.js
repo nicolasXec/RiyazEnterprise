@@ -24,7 +24,7 @@ require('./components/footer/footer.component.js');
 require('./components/header/header.component.js');
 
 var app = angular.module('webApp', [
-  // user components
+  // user components 
   'homeM'
   , 'contactM'
   , 'storeLocationsM'
@@ -62,8 +62,8 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
       when('/contact', {
         template: '<contact></contact>'
       }).
-      when('/product', {
-        template: '<product></product>'
+      when('/products', {
+        template: '<products></products>'
       }).
       otherwise('/home');
       //EOC route configuration
