@@ -22,6 +22,7 @@ require('./storeLocations/storeLocations.component.js');
 require('./products/products.component.js');
 require('./components/footer/footer.component.js');
 
+
 var app = angular.module('webApp', [
   // user components
   'homeM'
@@ -35,6 +36,10 @@ var app = angular.module('webApp', [
   , 'ngAria'
   , 'ngMaterial'
 ]);
+
+
+//user defined directives
+require('./directives/cardItem/cardItem.directive.js');
 
 
 //route config section
@@ -195,7 +200,7 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
           self.keepMenuOpenFlag = true;
         }
 
-        //stop the event propagation to the "window click" event, which 
+        //stop the event propagation to the "window click" event, which
         //sets self.keepMenuOpenFlag = false;
         //$event.stopPropagation();
         //$event.preventDefault();
