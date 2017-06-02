@@ -1,4 +1,4 @@
-var links = require("../common/links.js");
+var links = require("../../common/links.js");
 
 var contactModule = angular.module("contactM", [])
 .component('contact',{
