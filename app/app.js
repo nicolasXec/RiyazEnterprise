@@ -20,6 +20,7 @@ require('./home/home.component.js');
 require('./contact/contact.component.js');
 require('./storeLocations/storeLocations.component.js');
 require('./products/products.component.js');
+require('./components/footer/footer.component.js');
 
 var app = angular.module('webApp', [
   // user components
@@ -27,6 +28,7 @@ var app = angular.module('webApp', [
   , 'contactM'
   , 'storeLocationsM'
   , 'productsM'
+  , 'footerM'
   //Material devDependencies
   , 'ngRoute'
   , 'ngAnimate'
@@ -173,6 +175,7 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
 
           //close the menu
           //TODO this throws exception when panel does not exits, which is the first time
+          //or when its routed to second page the first time
           self.mdPanelRef.close();
 
           //redirect
@@ -184,7 +187,7 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
              $location.path('/contact');
           }else if(item.id == 5){
             //about us
-             //$location.path('/');
+             $location.path('/');
           }
 
           return;
