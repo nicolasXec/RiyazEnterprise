@@ -1,7 +1,6 @@
-
 <div class="fab-scroll-to-top-btn">
   <md-button class="md-fab md-mini" aria-label="Eat cake">
-               <md-icon aria-label="Menu" class="material-icons text-white">expand_less</md-icon>
+    <md-icon aria-label="Menu" class="material-icons text-white">expand_less</md-icon>
   </md-button>
 </div>
 
@@ -11,181 +10,183 @@
 
 
 <div layout="column" class="wrapper" style="background-color:#ebeff1;">
-  <div flex  class="header-color header">
-    <div layout="row">
+<div flex class="header-color header">
+  <div layout="row">
 
-        <div flex>
-          <div class="row">
-            <div class="col-md-5 offset-md-2 pt-4">
-              <h5 class="text-white logo-text pr-2">Riyaz Enterprises</h5>
-                <img src="images/logo.png" alt="no image found" class="logo pl-3">
-            </div>
-
-
-          </div>
-
-
+    <div flex>
+      <div class="row">
+        <div class="col-md-5 offset-md-2 pt-4">
+          <h5 class="text-white logo-text pr-2">Riyaz Enterprises</h5>
+          <img src="images/logo.png" alt="no image found" class="logo pl-3">
         </div>
-        <div flex>
-            <md-content class="md-padding" >
-          <md-icon aria-label="Menu" class="material-icons text-white">phone</md-icon>
-      <span class = "text-white header-text">9049035958</span>
-      <md-icon aria-label="Menu" class="material-icons text-white">email</md-icon>
-      <span class = "text-white  header-text">akhlshaikh28@gmail.com</span>
 
 
-
- <md-button class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Send Inquiry</md-button>
-      </md-content>
-        </div>
+      </div>
 
 
     </div>
+    <div flex>
+      <md-content class="md-padding">
+        <md-icon aria-label="Menu" class="material-icons text-white">phone</md-icon>
+        <span class="text-white header-text">9049035958</span>
+        <md-icon aria-label="Menu" class="material-icons text-white">email</md-icon>
+        <span class="text-white  header-text">akhlshaikh28@gmail.com</span>
+
+
+
+        <md-button class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Send Inquiry</md-button>
+      </md-content>
+    </div>
+
+
+  </div>
+</div>
+
+<scroll-fix flex class="nav-bar-contaienr" fixed="$ctrl.fixedNav">
+  <div class="row">
+    <div class="col-md-2 offset-md-1 ">
+      <img src="images/logo.png" ng-show="$ctrl.fixedNav" alt="no image found" class="logo-in-fixed-nav">
+    </div>
+    <div class="col-md-6">
+      <nav-menu items="$ctrl.navItems" class="nav-link-btn"></nav-menu>
+    </div>
+
   </div>
 
-  <scroll-fix flex  class="nav-bar-contaienr" fixed="$ctrl.fixedNav">
-    <div class="row">
-      <div class="col-md-2 offset-md-1 ">
-      <img src="images/logo.png" ng-show="$ctrl.fixedNav" alt="no image found" class="logo-in-fixed-nav">
-      </div>
-      <div class="col-md-6">
-          <nav-menu items="$ctrl.navItems" class="nav-link-btn"></nav-menu>
-      </div>
-
-    </div>
 
 
-
-  </scroll-fix>
+</scroll-fix>
 
 
 <!-- <h1>{{ $ctrl.tittle }}</h1> -->
 
 
-  <div flex>
-    <!-- <hr class="invisible" /> -->
-    <md-content class="md-padding mt-1" style="background-color:white;">
-      <div class="container">
-        <div class="row ">
-          <div  class="col-md-12 text-md-center">
-            <ul class="breadcrumb"  style='background-color: #ffffff;
+<div flex>
+  <!-- <hr class="invisible" /> -->
+  <md-content class="md-padding mt-1" style="background-color:white;">
+<div class="container">
+  <div class="row ">
+    <div class="col-md-12 text-md-center">
+      <ul class="breadcrumb" style='background-color: #ffffff;
     padding: 0px;
     margin: 0px;
     color:#999999'>
 <li class="breadcrumb-item">Home</li>
-<li class="breadcrumb-item" >New</li>
+<li class="breadcrumb-item">New</li>
 <li class="breadcrumb-item ">Experience Centers</li>
 <li class="breadcrumb-item ">Bedroom</li>
 </ul>
-            <h4>Living Room</h4>
-                <span class="card-item-product-text-below">(30 products)</span>
-          </div>
+<h4>Living Room</h4>
+<span class="card-item-product-text-below">(30 products)</span>
+</div>
 
 
 
 
-        </div>
-        <div class="row">
-<div class="col-md-12">
-  <hr class="invisible m-0 mt-2"/>
-  <md-divider></md-divider>
-  <md-content class="md-padding" style="background-color:white;">
-    <span class="m-3">SORT BY : </span>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <hr class="invisible m-0 mt-2" />
+    <md-divider></md-divider>
+    <md-content class="md-padding" style="background-color:white;">
+<span class="m-3">SORT BY : </span>
 
-    <md-button class="md-raised md-accent" style="margin: 0px;
+<md-button class="md-raised md-accent" style="margin: 0px;
     font-size: 12px;
     padding-left: 13px;
-    padding-right: 8px;">Disbount<md-icon  style="     font-size: 16px;
-    line-height: 22px;" class="material-icons">expand_less</md-icon></md-button>
-  </md-content>
+    padding-right: 8px;">Popular<md-icon style="     font-size: 16px;
+    line-height: 22px;" class="material-icons">expand_less</md-icon>
+</md-button>
 
-  <md-divider></md-divider>
-  <hr class="invisible" />
+</md-content>
+
+<md-divider></md-divider>
+<hr class="invisible" />
 
 </div>
 
-        </div>
-        <div class="row">
+</div>
+<div class="row">
 
-                  <div layout="row" layout-align="space-between center">
+  <div layout="row" layout-align="space-between center">
 
-                    <div flex layout="row">
-                      <div flex class="text-md-center">
-                      <md-card style="overflow:hidden">
-                        <div class="card-item-tag">
-                          Popular
+    <div flex layout="row">
+      <div flex class="text-md-center">
+        <md-card style="overflow:hidden">
+<div class="card-item-tag">
+  Popular
 
-                        </div>
-                        
-            <img ng-src="images/1.jpg" class="md-card-image card-item-image" alt="Washed Out">
-            <md-card-title>
-             <md-card-title-text>
-               <span class="card-item-product-text">Living Room</span>
-               <span class="card-item-product-text-below">(dark Matte Finish)</span>
+</div>
 
-             </md-card-title-text>
-            </md-card-title>
-                      <md-card-content>
+<img ng-src="images/1.jpg" class="md-card-image card-item-image" alt="Washed Out">
+<md-card-title>
+  <md-card-title-text>
+    <span class="card-item-product-text">Living Room</span>
+    <span class="card-item-product-text-below">(dark Matte Finish)</span>
 
-
-
-                      <md-button class="md-raised md-warn pl-3 pr-3 card-item-btn-viewProd">View Product</md-button>
-                      </md-card-content>
-
-                      </md-card>
-
-                      </div>
-
-
-                      <div flex style="text-align:center">
-                        <md-card>
-            <img ng-src="images/2.jpg" class="md-card-image"  alt="Washed Out">
-            <md-card-title>
-             <md-card-title-text>
-               <span class="md-headline">Kitchen</span>
-             </md-card-title-text>
-            </md-card-title>
-                        <md-card-content>
-
-
-                <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
-
-
-                        </md-card-content>
-
-                        </md-card>
-
-                      </div>
-
-
-                      <div flex style="text-align:center">
-                        <md-card>
-            <img ng-src="images/3.jpg" class="md-card-image" alt="Washed Out">
-                  <md-card-title>
-                   <md-card-title-text>
-                     <span class="md-headline">Bathroom</span>
-                   </md-card-title-text>
-                  </md-card-title>
-                        <md-card-content>
-
-
-                        <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
-                        </md-card-content>
-
-                        </md-card>
-
-                      </div>
-                    </div>
+  </md-card-title-text>
+</md-card-title>
+<md-card-content>
 
 
 
+  <md-button class="md-raised md-warn pl-3 pr-3 card-item-btn-viewProd">View Product</md-button>
+</md-card-content>
 
-                  </div>
+</md-card>
 
-        </div>
+</div>
 
-      </div>
 
-    </md-content>
-  </div>
-  <footer></footer>
+<div flex style="text-align:center">
+<md-card>
+  <img ng-src="images/2.jpg" class="md-card-image" alt="Washed Out">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Kitchen</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+
+
+    <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+
+
+  </md-card-content>
+
+</md-card>
+
+</div>
+
+
+<div flex style="text-align:center">
+<md-card>
+  <img ng-src="images/3.jpg" class="md-card-image" alt="Washed Out">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Bathroom</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+
+
+    <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+  </md-card-content>
+
+</md-card>
+
+</div>
+</div>
+
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</md-content>
+</div>
+<footer></footer>
