@@ -2,7 +2,7 @@
 
 var webApp = angular.module('webApp');
 
-webApp.directive('CardItem', ['$window' ,function($window){
+webApp.directive('cardItem', ['$window' ,function($window){
 
   var $win = angular.element($window);
     console.log("card Item  Directive intiated");
