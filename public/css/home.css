@@ -290,3 +290,9 @@ text-overflow: ellipsis;
 .fa-google-plus:hover {
     background-color: #e25714;
 }
+
+/* menu panel */
+.divider-reset{
+    margin:0px;
+    padding:0px;
+}

@@ -90,7 +90,57 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
       controller: function(mdPanelRef){
         console.log('menu controller init');
 
-         var _self = this;
+        var _self = this;
+
+        _self.menuItems = [
+          {title: "Living room",  //main group
+           id:1,
+           list: [
+             {title: "Tables",  //category
+              id:1,
+              products: [ //products in category
+                {name:"Dining", id:1}, {name:"study", id:2}, {name:"drawing", id:3}
+              ],
+              imgUrl:null},
+              {title: "Sofas",  //category
+               id:2,
+               products: [
+                {name:"Sectional", id:1}, {name:"Couches", id:2}, {name:"Corner", id:3}
+              ],
+              imgUrl:null}
+           ]
+          },
+          {title: "Kitchen",
+          id:2,
+          list: [
+             {title: "Chimneys",
+              id:3,
+              products: [
+                {name:"Faber", id:1}, {name:"sunflame", id:2}, {name:"Kaff", id:3}
+              ],
+              imgUrl:null}
+           ]
+          },
+          {title: "Bathroom",
+          id:3,
+          list: [
+             {title: "Doors",
+              id:4,
+              products: [
+                {name:"Fibre", id:1}, {name:"Platic", id:2}, {name:"Rubberised", id:3}
+              ],
+              imgUrl:null}
+           ]
+          }
+        ];
+
+        _self.subItem = _self.menuItems[0].list;
+      
+      _self.mainItemClick = function(menuItem){
+        console.log('menu item ' + JSON.stringify(menuItem));
+        _self.subItem = menuItem.list;
+
+      }
 
       _self.panelClick = function ($event) {
         console.log('menu click event ');
@@ -175,43 +225,20 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
       //it return a reject when the close intercept promise resolves
       self.keepMenuOpenFlag = false;
 
-      //menu item click function
-      self.menuClick = function ($event, item) {
+      self.mouseOver = function($event, item){
 
-        //if menu does not have items return
-        // and set the keepMenuOpenFlag to false, to let the menu close
-        //when close intercept promise is resolved
-        if (!item.hasCollps) {
-          self.keepMenuOpenFlag = false;
+          if (!item.hasCollps) {
 
-          //close the menu
+                      //close the menu
           //TODO this throws exception when panel does not exits, which is the first time
           //or when its routed to second page the first time
           self.mdPanelRef.close();
 
-          //redirect
-          if(item.id == 3){
-            //store locations
-             $location.path('/location');
-          }else if(item.id == 4){
-            //contact us
-             $location.path('/contact');
-          }else if(item.id == 5){
-            //about us
-             $location.path('/');
+            return;
           }
 
-          return;
-        } else {
-          self.keepMenuOpenFlag = true;
-        }
+          console.log('mouse over');
 
-        //stop the event propagation to the "window click" event, which
-        //sets self.keepMenuOpenFlag = false;
-        //$event.stopPropagation();
-        //$event.preventDefault();
-
-        //make panel postion object
         var pos = self._mdPanel.newPanelPosition()
           .relativeTo($event.currentTarget)
           .addPanelPosition(self._mdPanel.xPosition.ALIGN_START
@@ -225,27 +252,7 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
           .closeTo($event.currentTarget)
           .withAnimation($mdPanel.animation.FADE);
 
-        //a function that returns promise, that rejects when self.keepMenuOpenFlag is true
-        var closePromise = function () {
-          return $q(function (resolve, reject) {
-            console.log('promise ' + self.keepMenuOpenFlag);
-            if (self.keepMenuOpenFlag == true) {
-              reject();
-              //dont allow close of panel
-              //TODO an exception is thrown saying that reject is undefined
-              // how to implement reject to stop exception being thrown
-            } else {
-              resolve();
-              //proceed as usual
-            }
-
-          });
-        }
-
-        //set the close interceptor, that can reject the panel close opertation
-       // self.mdPanelRef.registerInterceptor($mdPanel.interceptorTypes.CLOSE, closePromise);
-
-        //if panel is not attached, then
+                  //if panel is not attached, then
         // > on attach, show the panel
         //else
         // > show the panel
@@ -269,6 +276,112 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
           self.mdPanelRef.show();
 
         }
+
+      }
+
+      //menu item click function
+      self.menuClick = function($event, item) {
+
+        //if menu has items then return
+        if (item.hasCollps) {
+          return; 
+        }
+
+        console.log('click on menu');
+
+        //if menu does not have items return
+        // and set the keepMenuOpenFlag to false, to let the menu close
+        //when close intercept promise is resolved
+        if (!item.hasCollps) {
+          //self.keepMenuOpenFlag = false;
+
+          //close the menu
+          //TODO this throws exception when panel does not exits, which is the first time
+          //or when its routed to second page the first time
+          self.mdPanelRef.close();
+
+          //redirect
+          if(item.id == 3){
+            //store locations
+             $location.path('/location');
+          }else if(item.id == 4){
+            //contact us
+             $location.path('/contact');
+          }else if(item.id == 5){
+            //about us
+             $location.path('/');
+          }
+
+          //return;
+        } 
+        
+        // else {
+        //   self.keepMenuOpenFlag = true;
+        // }
+
+        //stop the event propagation to the "window click" event, which
+        //sets self.keepMenuOpenFlag = false;
+        //$event.stopPropagation();
+        //$event.preventDefault();
+
+        //make panel postion object
+        // var pos = self._mdPanel.newPanelPosition()
+        //   .relativeTo($event.currentTarget)
+        //   .addPanelPosition(self._mdPanel.xPosition.ALIGN_START
+        //   , self._mdPanel.yPosition.ALIGN_TOPS)
+        //   .withOffsetY('50px');
+
+        // //make panel animation object
+        // var panelAnimation = $mdPanel.newPanelAnimation()
+        //   .openFrom($event.currentTarget)
+        //   .duration(280)
+        //   .closeTo($event.currentTarget)
+        //   .withAnimation($mdPanel.animation.FADE);
+
+        //a function that returns promise, that rejects when self.keepMenuOpenFlag is true
+        // var closePromise = function () {
+        //   return $q(function (resolve, reject) {
+        //     console.log('promise ' + self.keepMenuOpenFlag);
+        //     if (self.keepMenuOpenFlag == true) {
+        //       reject();
+        //       //dont allow close of panel
+        //       //TODO an exception is thrown saying that reject is undefined
+        //       // how to implement reject to stop exception being thrown
+        //     } else {
+        //       resolve();
+        //       //proceed as usual
+        //     }
+
+        //   });
+        // }
+
+        //set the close interceptor, that can reject the panel close opertation
+       // self.mdPanelRef.registerInterceptor($mdPanel.interceptorTypes.CLOSE, closePromise);
+
+        //if panel is not attached, then
+        // > on attach, show the panel
+        //else
+        // > show the panel
+        // if (!self.mdPanelRef.isAttached) {
+        //   console.log('panel not attached');
+        //   self.mdPanelRef.attach()
+        //   .then(function () {
+
+        //       console.log('attaching menu panel');
+        //       self.mdPanelRef.updateAnimation(panelAnimation);
+        //       self.mdPanelRef.updatePosition(pos);
+        //       self.mdPanelRef.show();
+
+        //   });
+
+        // } else {
+
+        //   console.log('show panel directly');
+        //   self.mdPanelRef.updateAnimation(panelAnimation);
+        //   self.mdPanelRef.updatePosition(pos);
+        //   self.mdPanelRef.show();
+
+        // }
 
       };
       //EOC user menu section

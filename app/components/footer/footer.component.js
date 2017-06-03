@@ -11,7 +11,7 @@ var footerModule = angular.module('footerM', [])
 
       self.go = function(path){
         console.log('path ' + path);
-        $location.path('/' + path);
+        $location.path(path);
       }
 
     }]
