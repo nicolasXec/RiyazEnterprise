@@ -15,10 +15,44 @@
 
 .menu-panel{
 
-    background-color: white;
-    box-shadow: 1px 1px 3px 0px;
+    background-color: #fafafa;
+    box-shadow: 1px 2px 6px -3px;
     /*padding:4px;*/
 }
+
+.panel-item-list-text{
+  font-size:14px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Mr Eaves XL Modern", sans-serif;
+  color: #2F4858;
+}
+.panel-supheader{
+  font-size:15px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Mr Eaves XL Modern", sans-serif;
+}
+
+/*.panel-supheader .md-subheader-content {
+  text-align:center;
+  padding-bottom:5px;
+  border-bottom: 2px solid orange;
+}*/
+.panel-menu-category-nav{
+  border-left: 3px solid transparent;
+  transition: all .5s;
+}
+.panel-menu-category-nav:hover{
+  border-left: 3px solid red;
+  background-color: #fafafa;
+  cursor:pointer;
+}
+
+ .panel-sub-menu-nav-2:hover{
+   cursor:pointer;
+   color:orange;
+ }
 .panel-sub-menu-nav{
   margin: 0px;
       width: 100%;
@@ -26,7 +60,22 @@
       text-align: center;
 }
 
-.panel-sub-menu-nav-container md-list-item, md-list-item .md-list-item-inner {
+
+
+.panel-horizontal-divider{
+
+
+  background-color: rgba(189, 189, 189, 0.25);
+    width: 1px;
+    height: auto;
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+
+
+
+.menu-panel md-list-item, md-list-item .md-list-item-inner {
   height: 36px;
 	min-height: initial; // initial makes better sense than 100%?
 

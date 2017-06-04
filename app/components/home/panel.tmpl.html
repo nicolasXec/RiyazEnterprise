@@ -1,33 +1,61 @@
 <div ng-cloak layout="row" layout-wrap>
-  <div flex="auto">
-    <md-content>
-      <md-list>
-        <!--<md-subheader class="md-no-sticky">Categories</md-subheader>-->
-        <md-list-item class="md-1-line" ng-repeat="menuItem in ctrl.menuItems track by menuItem.id"
+
+  <div flex="auto" style="background-color:white;">
+    <md-content class="md-padding pr-0" style="background-color:white; box-shadow: 12px -6px 21px -20px;;
+    height: 100%; z-index:5;">
+
+
+      <md-list >
+  <md-subheader class="md-no-sticky panel-supheader" style="background-color:white;">CATEGORIES</md-subheader>
+
+        <md-list-item style="padding-right: 28px;
+    padding-left: 16px;" class="md-1-line panel-menu-category-nav"  ng-repeat="menuItem in ctrl.menuItems track by menuItem.id"
         ng-mouseover="ctrl.mainItemClick(menuItem)">
           <div class="md-list-item-text" layout="column">
-            <span>{{menuItem.title}}</span>
+            <span class="panel-item-list-text">{{menuItem.title}}</span>
           </div>
         </md-list-item>
       </md-list>
     </md-content>
+
   </div>
 
   <!--<md-divider flex="none" md-inset style="margin:0px"></md-divider>-->
+<!-- <div flex="auto" class="panel-horizontal-divider">
 
-<div flex="auto" layout="row" layout-wrap>
-  <div  flex ng-repeat="item in ctrl.subItem">
-    <md-content>
-      <md-list>
-        <md-subheader class="md-no-sticky">{{item.title}}</md-subheader>
-        <md-list-item ng-repeat="prod in item.products track by prod.id" class="md-1-line" ng-click="null">
+</div> -->
+<div flex="auto" layout="row"  style="background-color:#fafafa;" layout-wrap>
+  <md-content flex layout="row" class="md-padding" style="background-color: #fafafa; " >
+  <div flex  ng-repeat="item in ctrl.subItem">
+
+      <md-list class="">
+        <md-subheader style="background-color: #fafafa;" class="md-no-sticky panel-supheader">{{item.title}}</md-subheader>
+        <md-list-item ng-repeat="prod in item.products track by prod.id" class="md-1-line " >
           <div class="md-list-item-text" layout="column">
-            <span>{{prod.name}}<span>
+            <span class="panel-item-list-text  panel-sub-menu-nav-2">{{prod.name}}<span>
+          </div>
+        </md-list-item>
+        <md-list-item  class="md-1-line" >
+          <div class="md-list-item-text" layout="column">
+            <span class="panel-item-list-text"><strong>view All</strong><span>
           </div>
         </md-list-item>
       </md-list>
-    </md-content>
+      <md-list></md-list>
+
+
+
+
     </div>
+  </md-content>
+
+
+  </div>
+
+  <div flex="auto" style="background-color:#fafafa;" layout-wrap>
+    <md-content class="md-padding" style="background-color: #fafafa;" >
+        <img src="images/45.jpg" class="mt-3" style="height=140px; width:220px;" alt=""></md-content>
+
   </div>
 
 </div>

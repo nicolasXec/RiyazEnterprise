@@ -27,7 +27,13 @@ nav-menu .md-button{
   padding-bottom:8px;
   border-radius:0px;
   font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+  border-bottom: 3px solid transparent;
+  transition: all .6s;
 
+}
+nav-menu .md-button:hover{
+    border-bottom: 3px solid orange;
+    background-color:transparent !important;
 }
 
 nav-menu .add-bold{
@@ -39,6 +45,11 @@ font-weight: 600;
 nav-menu .material-icons{
   font-size:20px;
 }
+
+/*.nav-link-btn{
+  border: 2px solid orange;
+}*/
+
 
 .card-item-product-text{
 font-size:16px;
