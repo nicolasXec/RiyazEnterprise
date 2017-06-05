@@ -1,7 +1,12 @@
+
+<div class="panel-contentwrapper" ng-mouseenter="ctrl.closePanel()">
+
+</div>
 <div ng-cloak layout="row" layout-wrap  class="panel-class-wrapper" >
-<div flex layout="row" ng-mouseleave="ctrl.closePanel()">
+<div flex layout="row" >
+
   <div flex="auto" style="background-color:white;" >
-    <md-content class="md-padding pr-0" style="background-color:white; box-shadow: 12px -6px 21px -20px;;
+    <md-content class="md-padding pr-0 pt-0" style="background-color:white; box-shadow: 12px -6px 21px -20px;;
     height: 100%; z-index:5;">
 
 
@@ -24,12 +29,12 @@
   <!-- <div flex="auto" class="panel-horizontal-divider">
 
   </div> -->
-  <div flex="auto" layout="row"  style="background-color:#fafafa;" layout-wrap>
-  <md-content flex layout="row" class="md-padding" style="background-color: #fafafa; " >
-  <div flex  ng-repeat="item in ctrl.subItem">
+  <div flex="auto" layout="row"  class="menu-panel-sub-nav-content" style="background-color:#fafafa;" layout-wrap>
+  <md-content flex layout="row" class="md-padding pl-0 pt-0" style="background-color: #fafafa; " >
 
-      <md-list class="">
-        <md-subheader style="background-color: #fafafa;" class="md-no-sticky panel-supheader">{{item.title}}</md-subheader>
+
+      <md-list flex class="panel-horizontal-divider" ng-repeat="item in ctrl.subItem">
+        <md-subheader style="background-color: #fafafa;" class="md-no-sticky panel-supheader2">{{item.title}}</md-subheader>
         <md-list-item ng-repeat="prod in item.products track by prod.id" class="md-1-line " >
           <div class="md-list-item-text" layout="column">
             <span class="panel-item-list-text  panel-sub-menu-nav-2" ng-click="ctrl.productView()">{{prod.name}}<span>
@@ -37,16 +42,16 @@
         </md-list-item>
         <md-list-item  class="md-1-line" >
           <div class="md-list-item-text" layout="column">
-            <span class="panel-item-list-text"  ng-click="ctrl.productViewAll()" ><strong>view All</strong><span>
+            <span class="panel-item-list-text panel-sub-menu-nav-2"  ng-click="ctrl.productViewAll()" ><strong>view All</strong><span>
           </div>
         </md-list-item>
       </md-list>
-      <md-list></md-list>
 
 
 
 
-    </div>
+
+
   </md-content>
 
 
@@ -54,7 +59,7 @@
 
   <div flex="auto" style="background-color:#fafafa;" layout-wrap>
     <md-content class="md-padding" style="background-color: #fafafa;" >
-        <img src="images/45.jpg" class="mt-3" style="height=140px; width:220px;" alt=""></md-content>
+        <img ng-src="images/{{ctrl.imageUrl}}.jpg" class="mt-2" style="height=140px; width:220px; border: 1px solid rgba(128, 128, 128, 0.52);" alt=""></md-content>
 
   </div>
 

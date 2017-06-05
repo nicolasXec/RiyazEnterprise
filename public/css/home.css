@@ -27,11 +27,16 @@
   font-family: "Mr Eaves XL Modern", sans-serif;
   color: #2F4858;
 }
-.panel-supheader{
+.panel-supheader , .panel-supheader2{
   font-size:15px;
   line-height: 1.5;
   letter-spacing: 0.5px;
   font-family: "Mr Eaves XL Modern", sans-serif;
+}
+
+.panel-supheader2 .md-subheader-inner{
+  padding-bottom:5px;
+  /*padding-top:4px;*/
 }
 
 /*.panel-supheader .md-subheader-content {
@@ -54,6 +59,10 @@
  .panel-sub-menu-nav-2:hover{
    cursor:pointer;
    color:orange;
+ }
+
+ .panel-sub-menu-nav-2{
+   font-size:12px;
  }
 .panel-sub-menu-nav{
   margin: 0px;
@@ -83,22 +92,55 @@
     background-color: rgba(27, 21, 21, 0.25);
 }
 
+.panel-horizontal-divider::after{
+  content: "";
+      border-right: 1px solid rgba(132, 114, 114, 0.22);
+      position: absolute;
+      /* right: 0px; */
+      top: 9%;
+      height: 6em;
+        width: 30%;
+
+
+}
 .panel-horizontal-divider{
+margin-right: 20px;
+
+}
+.panel-horizontal-divider:last-child{
+margin-right: 12px;
+
+}
+.panel-horizontal-divider:last-child::after{
+
+      border-right: 1px solid transparent;
+}
 
 
-  background-color: rgba(189, 189, 189, 0.25);
-    width: 1px;
-    height: auto;
-    margin-top: 35px;
-    margin-bottom: 35px;
+.panel-contentwrapper{
+  background-color: transparent;
+    height: 100vh;
+    position: absolute;
+    /* z-index: 69; */
+    width: 199%;
+    left: -86vh;
 }
 
 
 
 
+
 .menu-panel md-list-item, md-list-item .md-list-item-inner {
-  height: 36px;
+  height: 40px;
 	min-height: initial; // initial makes better sense than 100%?
+
+
+}
+
+.menu-panel-sub-nav-content md-list-item, md-list-item .md-list-item-inner {
+  height: 24px;
+	min-height: initial;
+  z-index: 44;
 
 }
 .panel-main-menu-nav{

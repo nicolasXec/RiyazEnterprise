@@ -98,46 +98,56 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
         // _self.mdPanelRef = self._mdPanel.create('menuPreset', {
         //   id: 'menu'
         // });
+        _self.imageUrl = "45";
 
         _self.menuItems = [
           {title: "Living room",  //main group
-           id:1,
-           list: [
-             {title: "Tables",  //category
+           id:1
+           , list: [
+             {title: "TABLES",  //category
               id:1,
               products: [ //products in category
                 {name:"Dining", id:1}, {name:"study", id:2}, {name:"drawing", id:3}
               ],
               imgUrl:null},
-              {title: "Sofas",  //category
+              {title: "SOFAS",  //category
                id:2,
                products: [
                 {name:"Sectional", id:1}, {name:"Couches", id:2}, {name:"Corner", id:3}
               ],
-              imgUrl:null}
+              imgUrl:"47"}
+              ,     {title: "SOFAS",  //category
+                   id:2,
+                   products: [
+                    {name:"Sectional", id:1}, {name:"Couches", id:2}, {name:"Corner", id:3}
+                  ],
+                  imgUrl:"47"}
            ]
+          , imgUrl:'45'
           },
           {title: "Kitchen",
-          id:2,
-          list: [
-             {title: "Chimneys",
+            id:2
+          , list: [
+             {title: "CHIMNEYS",
               id:3,
               products: [
                 {name:"Faber", id:1}, {name:"sunflame", id:2}, {name:"Kaff", id:3}
               ],
-              imgUrl:null}
+              imgUrl:"42"}
            ]
+          , imgUrl:'43'
           },
           {title: "Bathroom",
-          id:3,
-          list: [
-             {title: "Doors",
+          id:3
+          , list: [
+             {title: "DOORS",
               id:4,
               products: [
                 {name:"Fibre", id:1}, {name:"Platic", id:2}, {name:"Rubberised", id:3}
               ],
-              imgUrl:null}
+              imgUrl:"45"}
            ]
+            , imgUrl:'47'
           }
         ];
 
@@ -147,12 +157,16 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
         console.log('menu item ' + JSON.stringify(menuItem));
         _self.subItem = menuItem.list;
 
+        _self.imageUrl = menuItem.imgUrl;
+        console.log("this image to be displayed" + _self.imageUrl);
+
       }
 
       _self.productViewAll = function(){
 
         console.log("view all product clicked");
         $location.path('/products');
+          _self.mdPanelRef.close();
       }
 
 
@@ -160,6 +174,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
         console.log("product view page clicked");
         $location.path('/productD');
+          _self.mdPanelRef.close();
       }
 
       _self.closePanel = function(){
@@ -213,7 +228,7 @@ app.directive('scrollFix', ['$window', function ($window) {
     , restrict: 'EA'
     , controller: ['$mdPanel' ,  function($mdPanel ){
 
-      var self =  this;    
+      var self =  this;
 
 
 
