@@ -1,13 +1,13 @@
-<md-button ng-class="{  'add-bold' : menuItem.active }" 
-            class="nav-link-btn" 
-            ng-mouseenter="hover = true" 
+<md-button ng-class="{  'add-bold' : menuItem.active }"
+            class="nav-link-btn " 
+            ng-mouseenter="hover = true"
             ng-mouseleave="hover = false"
             ng-repeat="menuItem in items track by menuItem.id"
             ng-mouseover="ctrl.mouseOver($event, menuItem)"
             ng-click="ctrl.menuClick($event, menuItem)">
       {{menuItem.name}}
-      <md-icon ng-show="menuItem.hasCollps" 
-                  aria-label="Menu" 
+      <md-icon ng-show="menuItem.hasCollps"
+                  aria-label="Menu"
                   class="material-icons">{{hover ? "keyboard_arrow_down" : "keyboard_arrow_up"}}
       </md-icon>
 </md-button>

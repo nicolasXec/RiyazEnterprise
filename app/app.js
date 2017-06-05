@@ -77,71 +77,111 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
     //BOC menu configuration
     $mdPanelProvider.definePreset('menuPreset', {
       attachTo: angular.element(document.body),
+      // id:'navPanel',
       controllerAs: 'ctrl',
       templateUrl: links.templatesBasePath + 'panel.tmpl.html',
       panelClass: 'menu-panel',
       clickOutsideToClose: true,
       escapeToClose: true,
+      //hasBackdrop:true,
       focusOnOpen: false,
       zIndex:80,
       propagateContainerEvents: false,
       groupName: 'menus',
-      controller: function(mdPanelRef){
+      controller: ['mdPanelRef' , '$location' ,  function(mdPanelRef , $location){
         console.log('menu controller init');
 
         var _self = this;
 
+        // _self._mdPanel = $mdPanel;
+        // _self.mdPanelRef = self._mdPanel.create('menuPreset', {
+        //   id: 'menu'
+        // });
+
+        _self.imageUrl = "45";
+
         _self.menuItems = [
           {title: "Living room",  //main group
-           id:1,
-           list: [
-             {title: "Tables",  //category
+           id:1
+           , list: [
+             {title: "TABLES",  //category
               id:1,
               products: [ //products in category
                 {name:"Dining", id:1}, {name:"study", id:2}, {name:"drawing", id:3}
               ],
               imgUrl:null},
-              {title: "Sofas",  //category
+              {title: "SOFAS",  //category
                id:2,
                products: [
                 {name:"Sectional", id:1}, {name:"Couches", id:2}, {name:"Corner", id:3}
               ],
-              imgUrl:null}
+              imgUrl:"47"}
+              ,     {title: "SOFAS",  //category
+                   id:2,
+                   products: [
+                    {name:"Sectional", id:1}, {name:"Couches", id:2}, {name:"Corner", id:3}
+                  ],
+                  imgUrl:"47"}
            ]
+          , imgUrl:'45'
           },
           {title: "Kitchen",
-          id:2,
-          list: [
-             {title: "Chimneys",
+            id:2
+          , list: [
+             {title: "CHIMNEYS",
               id:3,
               products: [
                 {name:"Faber", id:1}, {name:"sunflame", id:2}, {name:"Kaff", id:3}
               ],
-              imgUrl:null}
+              imgUrl:"42"}
            ]
+          , imgUrl:'43'
           },
           {title: "Bathroom",
-          id:3,
-          list: [
-             {title: "Doors",
+          id:3
+          , list: [
+             {title: "DOORS",
               id:4,
               products: [
                 {name:"Fibre", id:1}, {name:"Platic", id:2}, {name:"Rubberised", id:3}
               ],
-              imgUrl:null}
+              imgUrl:"45"}
            ]
+            , imgUrl:'47'
           }
         ];
 
         _self.subItem = _self.menuItems[0].list;
-      
+
       _self.mainItemClick = function(menuItem){
         console.log('menu item ' + JSON.stringify(menuItem));
         _self.subItem = menuItem.list;
 
+        _self.imageUrl = menuItem.imgUrl;
+        console.log("this image to be displayed" + _self.imageUrl);
+
       }
 
-      //might not need this function
+      _self.productViewAll = function(){
+
+        console.log("view all product clicked");
+        $location.path('/products');
+          _self.mdPanelRef.close();
+      }
+
+
+      _self.productView = function(){
+
+        console.log("product view page clicked");
+        $location.path('/productD');
+          _self.mdPanelRef.close();
+      }
+
+      _self.closePanel = function(){
+        console.log("closing panel............");
+          _self.mdPanelRef.close();
+      };
+
       _self.panelClick = function ($event) {
         console.log('menu click event ');
         $event.stopPropagation();
@@ -160,9 +200,17 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
       };
 
-      }
+    }]
     });
     //EOC menu configuration
+
+  }])
+  .controller('appController', [ '$scope' , function($scope){
+    console.log("app conroller intiated yeay!!");
+
+    var self = this;
+
+
 
   }]);
 
@@ -176,6 +224,14 @@ app.directive('scrollFix', ['$window', function ($window) {
       fixed: '='
     }
     , restrict: 'EA'
+    , controller: ['$mdPanel' ,  function($mdPanel ){
+
+      var self =  this;
+
+
+
+
+    }]
     , link: function ($scope, element, attrs) {
       var topClass = "fix-to-top";
       var offsetTop = element.prop('offsetTop');
@@ -218,6 +274,8 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
       // BOC user menu
       self.isMenuOpen = false;
       self._mdPanel = $mdPanel;
+
+
       self.mdPanelRef = self._mdPanel.create('menuPreset', {
         id: 'menu'
       });
@@ -240,13 +298,15 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
           return;
         }
 
+
+
           console.log('mouse over');
 
         var pos = self._mdPanel.newPanelPosition()
           .relativeTo($event.currentTarget)
           .addPanelPosition(self._mdPanel.xPosition.ALIGN_START
           , self._mdPanel.yPosition.ALIGN_TOPS)
-          .withOffsetY('50px');
+          .withOffsetY('58px');
 
         //make panel animation object
         //TODO set animation if not set
@@ -283,12 +343,18 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
 
       }
 
+      // self.mouseover = function($event, item){
+      //   self.mdPanelRef.close();
+      // }
+
+
+
       //menu item click function
       self.menuClick = function($event, item) {
 
         //if menu has items then return
         if (item.hasCollps) {
-          return; 
+          return;
         }
 
         console.log('click on menu');
@@ -319,8 +385,8 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
           }
 
           //return;
-        } 
-        
+        }
+
         // else {
         //   self.keepMenuOpenFlag = true;
         // }

@@ -1,3 +1,7 @@
+
+<!-- <div class="panel-overlay" ng-mouseenter="ctrlHeader.appHover()"  >
+
+</div> -->
 <div layout="column" class="wrapper" style="background-color:#ebeff1;">
 <div flex class="header-color header">
   <div layout="row">
@@ -6,7 +10,7 @@
       <div class="row">
         <div class="col-md-5 offset-md-2 pt-4">
           <h5 ng-click="$ctrl.home()" class="text-white logo-text pr-2">Riyaz Enterprises</h5>
-          <img ng-click="$ctrl.home()" src="images/logo.png" alt="no image found" class="logo pl-3">
+          <img ng-click="$ctrl.home()" src="https://storage.googleapis.com/brilliant-brand-161108.appspot.com/Logo.png" alt="no image found" class="logo pl-3">
         </div>
       </div>
     </div>
@@ -23,13 +27,13 @@
   </div>
 </div>
 
-<scroll-fix flex class="nav-bar-contaienr" fixed="$ctrl.fixedNav">
+<scroll-fix flex class="nav-bar-contaienr" fixed="ctrlHeader.fixedNav"  >
   <div class="row">
     <div class="col-md-2 offset-md-1 ">
-      <img src="images/logo.png" ng-show="$ctrl.fixedNav" alt="no image found" class="logo-in-fixed-nav">
+      <img src="images/logo.png" ng-show="ctrlHeader.fixedNav" alt="no image found" class="logo-in-fixed-nav">
     </div>
     <div class="col-md-6" style="z-index:81">
-      <nav-menu items="$ctrl.navItems" class="nav-link-btn"></nav-menu>
+      <nav-menu items="ctrlHeader.navItems" ></nav-menu>
     </div>
 
   </div>
