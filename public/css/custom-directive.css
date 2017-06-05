@@ -5,12 +5,13 @@
   position:fixed;
   top:0;
   width: 100%;
-  z-index:40;
+  /*z-index:100;*/
   box-shadow:1px 1px 6px -1px;
 }
 
 scroll-fix {
   box-shadow: 1px 1px 11px -6px;
+  z-index: 100;
 }
 
 .nav-bar-contaienr{
@@ -27,7 +28,13 @@ nav-menu .md-button{
   padding-bottom:8px;
   border-radius:0px;
   font-family: Roboto,Helvetica Neue,Helvetica,Arial,sans-serif;
+  border-bottom: 3px solid transparent;
+  transition: all .6s;
 
+}
+nav-menu .md-button:hover{
+    border-bottom: 3px solid orange;
+    background-color:transparent !important;
 }
 
 nav-menu .add-bold{
@@ -39,6 +46,11 @@ font-weight: 600;
 nav-menu .material-icons{
   font-size:20px;
 }
+
+/*.nav-link-btn{
+  border: 2px solid orange;
+}*/
+
 
 .card-item-product-text{
 font-size:16px;

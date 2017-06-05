@@ -15,10 +15,55 @@
 
 .menu-panel{
 
-    background-color: white;
-    box-shadow: 1px 1px 3px 0px;
+    background-color: #fafafa;
+    box-shadow: 1px 2px 6px -3px;
     /*padding:4px;*/
 }
+
+.panel-item-list-text{
+  font-size:14px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Mr Eaves XL Modern", sans-serif;
+  color: #2F4858;
+}
+.panel-supheader , .panel-supheader2{
+  font-size:15px;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
+  font-family: "Mr Eaves XL Modern", sans-serif;
+}
+
+.panel-supheader2 .md-subheader-inner{
+  padding-bottom:5px;
+  /*padding-top:4px;*/
+}
+
+/*.panel-supheader .md-subheader-content {
+  text-align:center;
+  padding-bottom:5px;
+  border-bottom: 2px solid orange;
+}*/
+.panel-menu-category-nav{
+  border-left: 3px solid transparent;
+  //transition: all .5s;
+}
+.panel-menu-category-nav:hover{
+  border-left: 3px solid red;
+  background-color: #fafafa;
+  cursor:pointer;
+  border-top: 1px solid #f3f3f3;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+ .panel-sub-menu-nav-2:hover{
+   cursor:pointer;
+   color:orange;
+ }
+
+ .panel-sub-menu-nav-2{
+   font-size:12px;
+ }
 .panel-sub-menu-nav{
   margin: 0px;
       width: 100%;
@@ -26,9 +71,76 @@
       text-align: center;
 }
 
-.panel-sub-menu-nav-container md-list-item, md-list-item .md-list-item-inner {
-  height: 36px;
+.panel-class-wrapper::before{
+  content: "";
+      height: 3em;
+      width: 100%;
+      position: absolute;
+      top: -2em;
+      left: 0em;
+      z-index: 0;
+      background-color: white;
+}
+.panel-class-wrapper::after{
+  content: "";
+    height: 100vh;
+    width: 400%;
+    position: absolute;
+    top: -2em;
+    right: -111%;
+    z-index: -5;
+    background-color: rgba(27, 21, 21, 0.25);
+}
+
+.panel-horizontal-divider::after{
+  content: "";
+      border-right: 1px solid rgba(132, 114, 114, 0.22);
+      position: absolute;
+      /* right: 0px; */
+      top: 9%;
+      height: 6em;
+        width: 30%;
+
+
+}
+.panel-horizontal-divider{
+margin-right: 20px;
+
+}
+.panel-horizontal-divider:last-child{
+margin-right: 12px;
+
+}
+.panel-horizontal-divider:last-child::after{
+
+      border-right: 1px solid transparent;
+}
+
+
+.panel-contentwrapper{
+  background-color: transparent;
+    height: 100vh;
+    position: absolute;
+    /* z-index: 69; */
+    width: 199%;
+    left: -86vh;
+}
+
+
+
+
+
+.menu-panel md-list-item, md-list-item .md-list-item-inner {
+  height: 40px;
 	min-height: initial; // initial makes better sense than 100%?
+
+
+}
+
+.menu-panel-sub-nav-content md-list-item, md-list-item .md-list-item-inner {
+  height: 24px;
+	min-height: initial;
+  z-index: 44;
 
 }
 .panel-main-menu-nav{

@@ -2,9 +2,18 @@
 body{
   margin:0px;
 
+
+
 }
-
-
+.panel-overlay{
+  //display: none;
+  position: absolute;
+    top: 136px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+    height: 20em;
+    z-index: 80;
+}
 
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);
