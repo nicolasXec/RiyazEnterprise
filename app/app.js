@@ -97,7 +97,6 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
         // _self.mdPanelRef = self._mdPanel.create('menuPreset', {
         //   id: 'menu'
         // });
-
         _self.imageUrl = "45";
 
         _self.menuItems = [
@@ -297,6 +296,8 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
           }
           return;
         }
+
+
 
 
 
