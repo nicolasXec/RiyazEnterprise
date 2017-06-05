@@ -5,12 +5,13 @@
   position:fixed;
   top:0;
   width: 100%;
-  z-index:40;
+  /*z-index:100;*/
   box-shadow:1px 1px 6px -1px;
 }
 
 scroll-fix {
   box-shadow: 1px 1px 11px -6px;
+  z-index: 100;
 }
 
 .nav-bar-contaienr{

@@ -1,7 +1,7 @@
 
-<div class="panel-overlay">
+<!-- <div class="panel-overlay" ng-mouseenter="ctrlHeader.appHover()"  >
 
-</div>
+</div> -->
 <div layout="column" class="wrapper" style="background-color:#ebeff1;">
 <div flex class="header-color header">
   <div layout="row">
@@ -27,13 +27,13 @@
   </div>
 </div>
 
-<scroll-fix flex class="nav-bar-contaienr" fixed="$ctrl.fixedNav">
+<scroll-fix flex class="nav-bar-contaienr" fixed="ctrlHeader.fixedNav"  >
   <div class="row">
     <div class="col-md-2 offset-md-1 ">
-      <img src="images/logo.png" ng-show="$ctrl.fixedNav" alt="no image found" class="logo-in-fixed-nav">
+      <img src="images/logo.png" ng-show="ctrlHeader.fixedNav" alt="no image found" class="logo-in-fixed-nav">
     </div>
     <div class="col-md-6" style="z-index:81">
-      <nav-menu items="$ctrl.navItems" ></nav-menu>
+      <nav-menu items="ctrlHeader.navItems" ></nav-menu>
     </div>
 
   </div>

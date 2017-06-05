@@ -78,19 +78,26 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
     $mdPanelProvider.definePreset('menuPreset', {
       attachTo: angular.element(document.body),
+      // id:'navPanel',
       controllerAs: 'ctrl',
       templateUrl: links.templatesBasePath + 'panel.tmpl.html',
       panelClass: 'menu-panel',
       clickOutsideToClose: true,
       escapeToClose: true,
+      //hasBackdrop:true,
       focusOnOpen: false,
       zIndex:80,
       propagateContainerEvents: false,
       groupName: 'menus',
-      controller: function(mdPanelRef){
+      controller: ['mdPanelRef' , '$location' ,  function(mdPanelRef , $location){
         console.log('menu controller init');
 
         var _self = this;
+
+        // _self._mdPanel = $mdPanel;
+        // _self.mdPanelRef = self._mdPanel.create('menuPreset', {
+        //   id: 'menu'
+        // });
 
         _self.menuItems = [
           {title: "Living room",  //main group
@@ -135,12 +142,33 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
         ];
 
         _self.subItem = _self.menuItems[0].list;
-      
+
       _self.mainItemClick = function(menuItem){
         console.log('menu item ' + JSON.stringify(menuItem));
         _self.subItem = menuItem.list;
 
       }
+
+      _self.productViewAll = function(){
+
+        console.log("view all product clicked");
+        $location.path('/products');
+      }
+
+
+      _self.productView = function(){
+
+        console.log("product view page clicked");
+        $location.path('/productD');
+      }
+
+      _self.closePanel = function(){
+        console.log("closing panel............");
+          _self.mdPanelRef.close();
+      };
+
+
+
 
       _self.panelClick = function ($event) {
         console.log('menu click event ');
@@ -159,9 +187,17 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
       };
 
-      }
+    }]
     });
     //EOC menu configuration
+
+  }])
+  .controller('appController', [ '$scope' , function($scope){
+    console.log("app conroller intiated yeay!!");
+
+    var self = this;
+
+
 
   }]);
 
@@ -175,6 +211,14 @@ app.directive('scrollFix', ['$window', function ($window) {
       fixed: '='
     }
     , restrict: 'EA'
+    , controller: ['$mdPanel' ,  function($mdPanel ){
+
+      var self =  this;    
+
+
+
+
+    }]
     , link: function ($scope, element, attrs) {
       var topClass = "fix-to-top";
       var offsetTop = element.prop('offsetTop');
@@ -217,6 +261,8 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
       // BOC user menu
       self.isMenuOpen = false;
       self._mdPanel = $mdPanel;
+
+
       self.mdPanelRef = self._mdPanel.create('menuPreset', {
         id: 'menu'
       });
@@ -237,13 +283,15 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
             return;
           }
 
+
+
           console.log('mouse over');
 
         var pos = self._mdPanel.newPanelPosition()
           .relativeTo($event.currentTarget)
           .addPanelPosition(self._mdPanel.xPosition.ALIGN_START
           , self._mdPanel.yPosition.ALIGN_TOPS)
-          .withOffsetY('50px');
+          .withOffsetY('58px');
 
         //make panel animation object
         var panelAnimation = $mdPanel.newPanelAnimation()
@@ -279,12 +327,18 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
 
       }
 
+      // self.mouseover = function($event, item){
+      //   self.mdPanelRef.close();
+      // }
+
+
+
       //menu item click function
       self.menuClick = function($event, item) {
 
         //if menu has items then return
         if (item.hasCollps) {
-          return; 
+          return;
         }
 
         console.log('click on menu');
@@ -313,8 +367,8 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
           }
 
           //return;
-        } 
-        
+        }
+
         // else {
         //   self.keepMenuOpenFlag = true;
         // }
