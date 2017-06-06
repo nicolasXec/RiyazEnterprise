@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div layout="row" layout-align="end center">
+      <div>
+
+        <md-button class="md-icon-button" aria-label="More">
+          <md-icon aria-label="Menu" class="material-icons ">close</md-icon>
+        </md-button>
+
+      </div>
+
+    </div>
+
+    <h4 class="text-md-center" style="font-weight: lighter;
+    font-size: 34px;">Inqiry Form</h4>
+
+<form name="userForm">
+
+
+  <div layout-gt-sm="row">
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>First name</label>
+      <input ng-model="user.firstName">
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-sm>
+      <label>Long Last Name That Will Be Truncated And 3 Dots (Ellipsis) Will Appear At The End</label>
+      <input ng-model="theMax">
+    </md-input-container>
+  </div>
+
+  <md-input-container class="md-block">
+    <label>Phone</label>
+    <input ng-model="user.address">
+  </md-input-container>
+
+  <md-input-container class="md-block">
+    <label>Email</label>
+    <input ng-model="user.address">
+  </md-input-container>
+
+  <md-input-container class="md-block">
+    <label>Message</label>
+    <textarea ng-model="user.biography" md-maxlength="150" rows="5" md-select-on-focus></textarea>
+  </md-input-container>
+
+  <md-button class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Clear Form</md-button>
+  <md-button class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Send us Your inquiry</md-button>
+
+</form>
+</div>
+</div>

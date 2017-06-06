@@ -191,7 +191,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
       //might need to remove this function
       _self.closeUserMenu = function ($event) {
         console.log("close call init");
-        _self.mdPanelRef.hide()
+        _self.mdPanelRef.close()
           .then(function () {
             console.log("panel closed");
             self.panelOpened = false;
@@ -253,7 +253,7 @@ app.directive('scrollFix', ['$window', function ($window) {
 
 }]);
 
-app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $location) {
+app.directive('navMenu', ['$window', '$location', function ($window, $location) {
 
   console.log("navMenu Directive intiated");
 
@@ -278,7 +278,7 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
       self.mdPanelRef = self._mdPanel.create('menuPreset', {
         id: 'menu'
       });
-      self.mdPanelRef.attach();
+      //self.mdPanelRef.attach();
 
       //flag to keep menu open if set to true
       //it return a reject when the close intercept promise resolves
@@ -292,7 +292,7 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
           //TODO this throws exception when panel does not exits, which is the first time
           //or when its routed to second page the first time
           if (self.mdPanelRef.isAttached) {
-            self.mdPanelRef.hide();
+            self.mdPanelRef.close();
           }
           return;
         }
@@ -323,13 +323,13 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
         // > show the panel
         if (!self.mdPanelRef.isAttached) {
           console.log('panel not attached');
-          self.mdPanelRef.attach()
+        self.mdPanelRef.attach()
           .then(function () {
 
               console.log('attaching menu panel');
               self.mdPanelRef.updateAnimation(panelAnimation);
               self.mdPanelRef.updatePosition(pos);
-              self.mdPanelRef.show();
+              self.mdPanelRef.open();
 
           });
 

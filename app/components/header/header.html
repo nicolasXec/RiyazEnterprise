@@ -19,21 +19,22 @@
         <md-icon aria-label="Menu" class="material-icons text-white">phone</md-icon>
         <span class="text-white header-text">9049035958</span>
         <md-icon aria-label="Menu" class="material-icons text-white">email</md-icon>
-        <span class="text-white  header-text">RiyazEnterprise@gmail.com</span>
 
-        <md-button class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Send Inquiry</md-button>
+        <span class="text-white  header-text">riyazenterprises@gmail.com</span>
+        <md-button ng-click="$ctrl.enquiry()" class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Send Inquiry</md-button>
+
       </md-content>
     </div>
   </div>
 </div>
 
-<scroll-fix flex class="nav-bar-contaienr" fixed="ctrlHeader.fixedNav"  >
+<scroll-fix flex class="nav-bar-contaienr" fixed="$ctrl.fixedNav"  >
   <div class="row">
     <div class="col-md-2 offset-md-1 ">
-      <img src="images/logo.png" ng-show="ctrlHeader.fixedNav" alt="no image found" class="logo-in-fixed-nav">
+      <img src="images/logo.png" ng-show="$ctrl.fixedNav" alt="no image found" class="logo-in-fixed-nav">
     </div>
     <div class="col-md-6" style="z-index:81">
-      <nav-menu items="ctrlHeader.navItems" ></nav-menu>
+      <nav-menu items="$ctrl.navItems" ></nav-menu>
     </div>
 
   </div>
