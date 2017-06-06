@@ -21,11 +21,7 @@ var headerModule = angular.module('headerM', [])
         console.log('redirect home click');
         $location.path('/home');
       }
-
-      // self.appHover = function(){
-      //   console.log("app hover init");
-      // }
-
+      
       self.enquiry = function(){
         console.log('open enquiry form');
       }

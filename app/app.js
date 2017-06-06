@@ -203,13 +203,41 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
     });
     //EOC menu configuration
 
+ //BOC enquiry form panel
+  $mdPanelProvider.definePreset('enquiry', {
+      attachTo: angular.element(document.body),
+      controllerAs: 'ctrl',
+      templateUrl: links.templatesBasePath + 'enquiry.html',
+      //panelClass: 'menu-panel',
+      clickOutsideToClose: true,
+      escapeToClose: true,
+      hasBackdrop:true,
+      focusOnOpen: false,
+      trapFocus: true,
+      zIndex:80,
+      propagateContainerEvents: false,
+      groupName: 'contact',
+      controller: ['mdPanelRef',  function(mdPanelRef){
+        console.log('enquiry controller init');
+
+        var _self = this;
+
+
+      _self.closePanel = function(){
+        console.log("closing panel............");
+          _self.mdPanelRef.close();
+      };
+
+    }]
+    });
+
+    //ECO enquiry form panel
+
+
   }])
   .controller('appController', [ '$scope' , function($scope){
     console.log("app conroller intiated yeay!!");
-
     var self = this;
-
-
 
   }]);
 
