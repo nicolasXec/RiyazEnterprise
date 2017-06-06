@@ -75,7 +75,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
       when('/about', {
         template: '<about-us></about-us>'
       }).
-      otherwise('/home');
+      otherwise('/home'); 
       //EOC route configuration
 
 
