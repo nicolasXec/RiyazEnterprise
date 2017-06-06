@@ -5,17 +5,15 @@ var headerModule = angular.module('headerM', [])
   .component('header', {
     templateUrl: links.templatesBasePath + 'header.html',
 
-    controller: ['$location', function ($location) {
+    controller: ['$mdPanel', '$location', function ($mdPanel, $location) {
       console.log('header component init');
 
       var self = this;
 
       self.fixedNav = false;
       self.scrollEnter = false;
-      //self._mdPanel = mdPanelRef;
 
-      // self._mdPanel = $mdPanel;
-      // self.mdPanelRef = self._mdPanel.create('menuPreset', {
+      // self.mdPanelRef = self.$mdPanel.create('menuPreset', {
       //   id: 'menu'
       // });
 
