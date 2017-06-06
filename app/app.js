@@ -211,6 +211,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
         _self.subItem = _self.menuItems[0].list;
 
       _self.menuMouseOver = function(menuItem){
+
         console.log('menu item ' + JSON.stringify(menuItem));
         _self.subItem = menuItem.list;
 
@@ -313,9 +314,6 @@ app.directive('scrollFix', ['$window', function ($window) {
     , controller: ['$mdPanel' ,  function($mdPanel ){
 
       var self =  this;
-
-
-
 
     }]
     , link: function ($scope, element, attrs) {
