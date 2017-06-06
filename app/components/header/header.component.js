@@ -3,12 +3,10 @@ var links = require('../../common/links.js');
 
 var headerModule = angular.module('headerM', [])
   .component('header', {
-    controllerAs: 'ctrlHeader',
     templateUrl: links.templatesBasePath + 'header.html',
 
-    controller: ['$location' , '$mdPanel', function ($location , $mdPanel) {
+    controller: ['$location', function ($location) {
       console.log('header component init');
-
 
       var self = this;
 
@@ -16,26 +14,23 @@ var headerModule = angular.module('headerM', [])
       self.scrollEnter = false;
       //self._mdPanel = mdPanelRef;
 
-      self._mdPanel = $mdPanel;
-      self.mdPanelRef = self._mdPanel.create('menuPreset', {
-        id: 'menu'
-      });
+      // self._mdPanel = $mdPanel;
+      // self.mdPanelRef = self._mdPanel.create('menuPreset', {
+      //   id: 'menu'
+      // });
 
       self.home = function(){
+        console.log('redirect home click');
         $location.path('/home');
       }
 
-      self.appHover = function(){
-        console.log("app hover init");
-    //  self.mdPanelRef.close();
+      // self.appHover = function(){
+      //   console.log("app hover init");
+      // }
 
-      //  self.mdPanelRef.close();
-      //  self._mdPanel.close({id:"navPanel"});
-
-
+      self.enquiry = function(){
+        console.log('open enquiry form');
       }
-
-
 
       self.navItems = [
         { name: "Product", hasCollps: true, active: false, id: 1 }
