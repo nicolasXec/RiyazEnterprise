@@ -75,7 +75,6 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
 
     //BOC menu configuration
-
     $mdPanelProvider.definePreset('menuPreset', {
       attachTo: angular.element(document.body),
       // id:'navPanel',
@@ -182,9 +181,6 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
           _self.mdPanelRef.close();
       };
 
-
-
-
       _self.panelClick = function ($event) {
         console.log('menu click event ');
         $event.stopPropagation();
@@ -192,9 +188,10 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
       }
 
       //common controller for all menu items
+      //might need to remove this function
       _self.closeUserMenu = function ($event) {
         console.log("close call init");
-        _self.mdPanelRef.close()
+        _self.mdPanelRef.hide()
           .then(function () {
             console.log("panel closed");
             self.panelOpened = false;
@@ -281,6 +278,7 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
       self.mdPanelRef = self._mdPanel.create('menuPreset', {
         id: 'menu'
       });
+      self.mdPanelRef.attach();
 
       //flag to keep menu open if set to true
       //it return a reject when the close intercept promise resolves
@@ -288,15 +286,18 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
 
       self.mouseOver = function($event, item){
 
-          if (!item.hasCollps) {
+        if (!item.hasCollps) {
 
-                      //close the menu
+          //close the menu
           //TODO this throws exception when panel does not exits, which is the first time
           //or when its routed to second page the first time
-          self.mdPanelRef.close();
-
-            return;
+          if (self.mdPanelRef.isAttached) {
+            self.mdPanelRef.hide();
           }
+          return;
+        }
+
+
 
 
 
@@ -309,6 +310,7 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
           .withOffsetY('58px');
 
         //make panel animation object
+        //TODO set animation if not set
         var panelAnimation = $mdPanel.newPanelAnimation()
           .openFrom($event.currentTarget)
           .duration(280)
@@ -367,7 +369,9 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
           //close the menu
           //TODO this throws exception when panel does not exits, which is the first time
           //or when its routed to second page the first time
-          self.mdPanelRef.close();
+           if (self.mdPanelRef.isAttached) {
+            self.mdPanelRef.hide();
+          }
 
           //redirect
           if(item.id == 3){
@@ -388,25 +392,6 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
         //   self.keepMenuOpenFlag = true;
         // }
 
-        //stop the event propagation to the "window click" event, which
-        //sets self.keepMenuOpenFlag = false;
-        //$event.stopPropagation();
-        //$event.preventDefault();
-
-        //make panel postion object
-        // var pos = self._mdPanel.newPanelPosition()
-        //   .relativeTo($event.currentTarget)
-        //   .addPanelPosition(self._mdPanel.xPosition.ALIGN_START
-        //   , self._mdPanel.yPosition.ALIGN_TOPS)
-        //   .withOffsetY('50px');
-
-        // //make panel animation object
-        // var panelAnimation = $mdPanel.newPanelAnimation()
-        //   .openFrom($event.currentTarget)
-        //   .duration(280)
-        //   .closeTo($event.currentTarget)
-        //   .withAnimation($mdPanel.animation.FADE);
-
         //a function that returns promise, that rejects when self.keepMenuOpenFlag is true
         // var closePromise = function () {
         //   return $q(function (resolve, reject) {
@@ -426,32 +411,7 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
 
         //set the close interceptor, that can reject the panel close opertation
        // self.mdPanelRef.registerInterceptor($mdPanel.interceptorTypes.CLOSE, closePromise);
-
-        //if panel is not attached, then
-        // > on attach, show the panel
-        //else
-        // > show the panel
-        // if (!self.mdPanelRef.isAttached) {
-        //   console.log('panel not attached');
-        //   self.mdPanelRef.attach()
-        //   .then(function () {
-
-        //       console.log('attaching menu panel');
-        //       self.mdPanelRef.updateAnimation(panelAnimation);
-        //       self.mdPanelRef.updatePosition(pos);
-        //       self.mdPanelRef.show();
-
-        //   });
-
-        // } else {
-
-        //   console.log('show panel directly');
-        //   self.mdPanelRef.updateAnimation(panelAnimation);
-        //   self.mdPanelRef.updatePosition(pos);
-        //   self.mdPanelRef.show();
-
-        // }
-
+       
       };
       //EOC user menu section
 
@@ -461,7 +421,7 @@ app.directive('navMenu', ['$q', '$window', '$location', function ($q, $window, $
 
 
       console.log('link of menu directive');
-      var $win = angular.element($window);
+     // var $win = angular.element($window);
       // $win.on('click', function($event){
       //   //read description, above in controller, where its declared
       //   console.log('win click stop event proppgation ' + $event.isPropagationStopped);
