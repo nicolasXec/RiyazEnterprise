@@ -23,6 +23,7 @@ require('./components/products/products.component.js');
 require('./components/footer/footer.component.js');
 require('./components/header/header.component.js');
 require('./components/productDetail/productDetail.component.js');
+require('./components/aboutUs/aboutUs.component.js');
 
 var app = angular.module('webApp', [
   // user components
@@ -33,6 +34,7 @@ var app = angular.module('webApp', [
   , 'footerM'
   , 'headerM'
   , 'productDetailM'
+  , 'aboutM'
   //Material devDependencies
   , 'ngRoute'
   , 'ngAnimate'
@@ -70,6 +72,9 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
       when('/productD', {
         template: '<product-detail></product-detail>'
       }).
+      when('/about', {
+        template: '<about-us></about-us>'
+      }).
       otherwise('/home');
       //EOC route configuration
 
@@ -95,7 +100,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
         _self.imageUrl = "45";
 
        _self.menuData = [
-         {id: 1, 
+         {id: 1,
           menu: [
           {title: "Living room",  //main group
            id:1
@@ -489,7 +494,7 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
 
         //set the close interceptor, that can reject the panel close opertation
        // self.mdPanelRef.registerInterceptor($mdPanel.interceptorTypes.CLOSE, closePromise);
-       
+
       };
       //EOC user menu section
 
