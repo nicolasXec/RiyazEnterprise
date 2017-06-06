@@ -15,6 +15,9 @@ var links = require('./common/links.js');
 
 console.log('the entry point');
 
+//require service
+require('./services/menu.service.js');
+
 //user defined components
 require('./components/home/home.component.js');
 require('./components/contact/contact.component.js');
@@ -26,8 +29,10 @@ require('./components/productDetail/productDetail.component.js');
 require('./components/aboutUs/aboutUs.component.js');
 
 var app = angular.module('webApp', [
+  //user serices
+  'menuS'
   // user components
-  'homeM'
+  ,'homeM'
   , 'contactM'
   , 'storeLocationsM'
   , 'productsM'
@@ -87,128 +92,31 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
       templateUrl: links.templatesBasePath + 'panel.tmpl.html',
       panelClass: 'menu-panel',
       clickOutsideToClose: true,
+      bindToController: true,
       escapeToClose: true,
       //hasBackdrop:true,
       focusOnOpen: false,
       zIndex:80,
       propagateContainerEvents: false,
       groupName: 'menus',
-      controller: ['mdPanelRef' , '$location' ,  function(mdPanelRef , $location){
+      controller: ['mdPanelRef', '$location', '$scope', 'menuService', function(mdPanelRef , $location, $scope, menuService){
         console.log('menu controller init');
 
         var _self = this;
         _self.imageUrl = "45";
 
-       _self.menuData = [
-         {id: 1,
-          menu: [
-          {title: "Living room",  //main group
-           id:1
-           , list: [
-             {title: "TABLES",  //category
-              id:1,
-              products: [ //products in category
-                {name:"Dining", id:1}, {name:"study", id:2}, {name:"drawing", id:3}
-              ],
-              imgUrl:null},
-              {title: "SOFAS",  //category
-               id:2,
-               products: [
-                {name:"Sectional", id:1}, {name:"Couches", id:2}, {name:"Corner", id:3}
-              ],
-              imgUrl:"47"}
-              ,     {title: "SOFAS",  //category
-                   id:2,
-                   products: [
-                    {name:"Sectional", id:1}, {name:"Couches", id:2}, {name:"Corner", id:3}
-                  ],
-                  imgUrl:"47"}
-           ]
-          , imgUrl:'45'
-          },
-          {title: "Kitchen",
-            id:2
-          , list: [
-             {title: "CHIMNEYS",
-              id:3,
-              products: [
-                {name:"Faber", id:1}, {name:"sunflame", id:2}, {name:"Kaff", id:3}
-              ],
-              imgUrl:"42"}
-           ]
-          , imgUrl:'43'
-          },
-          {title: "Bathroom",
-          id:3
-          , list: [
-             {title: "DOORS",
-              id:4,
-              products: [
-                {name:"Fibre", id:1}, {name:"Platic", id:2}, {name:"Rubberised", id:3}
-              ],
-              imgUrl:"45"}
-           ]
-            , imgUrl:'47'
-          }
-        ]
-         },
-         {id:2,
-          menu: [
-          {title: "Hindware",  //main group
-           id:1
-           , list: [
-             {title: "SHOWERS",  //category
-              id:1,
-              products: [ //products in category
-                {name:"Grand", id:1}, {name:"Multi function", id:2}, {name:"Slim rain", id:3}
-              ],
-              imgUrl:null},
-              {title: "BASINS",  //category
-               id:2,
-               products: [
-                {name:"Cloakroom", id:1}, {name:"corner", id:2}, {name:"vanity", id:3}
-              ],
-              imgUrl:"47"}
-              ,     {title: "TOILETS",  //category
-                   id:2,
-                   products: [
-                    {name:"Denver close couple", id:1}, {name:"Euro", id:2}, {name:"Savoy", id:3}
-                  ],
-                  imgUrl:"47"}
-           ]
-          , imgUrl:'45'
-          },
-          {title: "Jaqur",
-            id:2
-          , list: [
-             {title: "TAPS",
-              id:3,
-              products: [
-                {name:"Edge bath", id:1}, {name:"Blade basin", id:2}, {name:"Flow deck", id:3}
-              ],
-              imgUrl:"42"}
-           ]
-          , imgUrl:'43'
-          },
-          {title: "Bayern",
-          id:3
-          , list: [
-             {title: "VANITY UNITS",
-              id:4,
-              products: [
-                {name:"Alpine", id:1}, {name:"Mino", id:2}, {name:"New polo", id:3}
-              ],
-              imgUrl:"45"}
-           ]
-            , imgUrl:'47'
-          }
-        ]
-        }
-       ];
+        _self.menuItems = menuService.getCurrentMenuItem();
+        _self.subItem =  _self.menuItems[0].list;
 
-        //init menu items
-        _self.menuItems = _self.menuData[0].menu;
-        _self.subItem = _self.menuItems[0].list;
+        menuService.subscribe($scope, function () {
+          console.log('notify menu itme change ');
+
+          _self.menuItems = menuService.getCurrentMenuItem();
+          _self.subItem = _self.menuItems[0].list;
+
+          console.log('setting item ' + JSON.stringify(_self.menuItems));
+
+        });
 
       _self.menuMouseOver = function(menuItem){
 
@@ -349,9 +257,9 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
     }
     , templateUrl: links.templatesBasePath + 'navMenu.tpl.html'
     , controllerAs: 'ctrl'
-    , controller: ['$mdPanel', '$scope' , function ($mdPanel, $scope) {
+    , controller: ['$mdPanel', '$scope', 'menuService' , function ($mdPanel, $scope, menuService) {
 
-      console.log("directive controller intiated yaa");
+      //console.log("directive controller intiated yaa");
 
       var self = this;
 
@@ -359,11 +267,8 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
       self.isMenuOpen = false;
       self._mdPanel = $mdPanel;
 
-
-      self.mdPanelRef = self._mdPanel.create('menuPreset', {
-        id: 'menu'
-      });
-      //self.mdPanelRef.attach();
+      //TODO move this to a serice or some other appropriate place
+      //BOC user menu data 
 
       //flag to keep menu open if set to true
       //it return a reject when the close intercept promise resolves
@@ -376,13 +281,18 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
           //close the menu
           //TODO this throws exception when panel does not exits, which is the first time
           //or when its routed to second page the first time
-          if (self.mdPanelRef.isAttached) {
+          if (self.mdPanelRef && self.mdPanelRef.isAttached ) {
             self.mdPanelRef.close();
           }
           return;
         }
 
-          console.log('mouse over');
+      self.mdPanelRef = self._mdPanel.create('menuPreset', {
+        id: 'menu'
+      });
+
+
+        menuService.setMenuItemId(item.id);
 
         var pos = self._mdPanel.newPanelPosition()
           .relativeTo($event.currentTarget)
@@ -403,7 +313,7 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
         //else
         // > show the panel
         if (!self.mdPanelRef.isAttached) {
-          console.log('panel not attached');
+         // console.log('panel not attached');
         self.mdPanelRef.attach()
           .then(function () {
 
@@ -425,12 +335,6 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
 
       }
 
-      // self.mouseover = function($event, item){
-      //   self.mdPanelRef.close();
-      // }
-
-
-
       //menu item click function
       self.menuClick = function($event, item) {
 
@@ -450,7 +354,7 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
           //close the menu
           //TODO this throws exception when panel does not exits, which is the first time
           //or when its routed to second page the first time
-           if (self.mdPanelRef.isAttached) {
+           if (self.mdPanelRef && self.mdPanelRef.isAttached ) {  
             self.mdPanelRef.hide();
           }
 
@@ -463,40 +367,12 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
              $location.path('/contact');
           }else if(item.id == 5){
             //about us
-             $location.path('/');
+             $location.path('/about');
           }
-
-          //return;
         }
-
-        // else {
-        //   self.keepMenuOpenFlag = true;
-        // }
-
-        //a function that returns promise, that rejects when self.keepMenuOpenFlag is true
-        // var closePromise = function () {
-        //   return $q(function (resolve, reject) {
-        //     console.log('promise ' + self.keepMenuOpenFlag);
-        //     if (self.keepMenuOpenFlag == true) {
-        //       reject();
-        //       //dont allow close of panel
-        //       //TODO an exception is thrown saying that reject is undefined
-        //       // how to implement reject to stop exception being thrown
-        //     } else {
-        //       resolve();
-        //       //proceed as usual
-        //     }
-
-        //   });
-        // }
-
-        //set the close interceptor, that can reject the panel close opertation
-       // self.mdPanelRef.registerInterceptor($mdPanel.interceptorTypes.CLOSE, closePromise);
 
       };
       //EOC user menu section
-
-
     }]
     , link: function (scope, element, attrs, ctrl) {
 
