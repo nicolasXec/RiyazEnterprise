@@ -408,3 +408,13 @@ text-overflow: ellipsis;
     margin:0px;
     padding:0px;
 }
+
+.tittle-style{
+  color: #ff8f00;
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 500;
+}
+.sub-tittle-style{
+  font-size:14px;
+}
