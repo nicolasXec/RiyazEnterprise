@@ -92,14 +92,11 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
         console.log('menu controller init');
 
         var _self = this;
-
-        // _self._mdPanel = $mdPanel;
-        // _self.mdPanelRef = self._mdPanel.create('menuPreset', {
-        //   id: 'menu'
-        // });
         _self.imageUrl = "45";
 
-        _self.menuItems = [
+       _self.menuData = [
+         {id: 1, 
+          menu: [
           {title: "Living room",  //main group
            id:1
            , list: [
@@ -148,11 +145,67 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
            ]
             , imgUrl:'47'
           }
-        ];
+        ]
+         },
+         {id:2,
+          menu: [
+          {title: "Living room",  //main group
+           id:1
+           , list: [
+             {title: "TABLES",  //category
+              id:1,
+              products: [ //products in category
+                {name:"Dining", id:1}, {name:"study", id:2}, {name:"drawing", id:3}
+              ],
+              imgUrl:null},
+              {title: "SOFAS",  //category
+               id:2,
+               products: [
+                {name:"Sectional", id:1}, {name:"Couches", id:2}, {name:"Corner", id:3}
+              ],
+              imgUrl:"47"}
+              ,     {title: "SOFAS",  //category
+                   id:2,
+                   products: [
+                    {name:"Sectional", id:1}, {name:"Couches", id:2}, {name:"Corner", id:3}
+                  ],
+                  imgUrl:"47"}
+           ]
+          , imgUrl:'45'
+          },
+          {title: "Kitchen",
+            id:2
+          , list: [
+             {title: "CHIMNEYS",
+              id:3,
+              products: [
+                {name:"Faber", id:1}, {name:"sunflame", id:2}, {name:"Kaff", id:3}
+              ],
+              imgUrl:"42"}
+           ]
+          , imgUrl:'43'
+          },
+          {title: "Bathroom",
+          id:3
+          , list: [
+             {title: "DOORS",
+              id:4,
+              products: [
+                {name:"Fibre", id:1}, {name:"Platic", id:2}, {name:"Rubberised", id:3}
+              ],
+              imgUrl:"45"}
+           ]
+            , imgUrl:'47'
+          }
+        ]
+        }
+       ];
 
+        //init menu items
+        _self.menuItems = _self.menuData[0].menu;
         _self.subItem = _self.menuItems[0].list;
 
-      _self.mainItemClick = function(menuItem){
+      _self.menuMouseOver = function(menuItem){
         console.log('menu item ' + JSON.stringify(menuItem));
         _self.subItem = menuItem.list;
 
@@ -202,6 +255,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
     }]
     });
     //EOC menu configuration
+
 
  //BOC enquiry form panel
   $mdPanelProvider.definePreset('enquiry', {
@@ -325,10 +379,6 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
           return;
         }
 
-
-
-
-
           console.log('mouse over');
 
         var pos = self._mdPanel.newPanelPosition()
@@ -345,7 +395,7 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
           .closeTo($event.currentTarget)
           .withAnimation($mdPanel.animation.FADE);
 
-                  //if panel is not attached, then
+        //if panel is not attached, then
         // > on attach, show the panel
         //else
         // > show the panel
@@ -366,7 +416,7 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
           console.log('show panel directly');
           self.mdPanelRef.updateAnimation(panelAnimation);
           self.mdPanelRef.updatePosition(pos);
-          self.mdPanelRef.show();
+          self.mdPanelRef.open();
 
         }
 

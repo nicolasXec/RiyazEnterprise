@@ -15,7 +15,7 @@
 
         <md-list-item style="padding-right: 28px;
     padding-left: 16px;" class="md-1-line panel-menu-category-nav"    ng-repeat="menuItem in ctrl.menuItems track by menuItem.id"
-        ng-mouseover="ctrl.mainItemClick(menuItem)">
+        ng-mouseover="ctrl.menuMouseOver(menuItem)">
           <div class="md-list-item-text" layout="column">
             <span class="panel-item-list-text">{{menuItem.title}}</span>
           </div>
