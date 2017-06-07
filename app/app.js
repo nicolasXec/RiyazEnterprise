@@ -8,8 +8,8 @@ require('angular-material');
 require('angular-animate');
 require('angular-aria');
 
-// var ngTouch = require('angular-touch');
-// var carousel  = require('angular-carousel');
+var ngTouch = require('angular-touch');
+var carousel  = require('angular-carousel');
 
 
 var links = require('./common/links.js');
@@ -46,6 +46,8 @@ var app = angular.module('webApp', [
   , 'ngAnimate'
   , 'ngAria'
   , 'ngMaterial'
+  //
+  , 'angular-carousel'
 ]);
 
 

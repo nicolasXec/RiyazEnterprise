@@ -21,6 +21,15 @@ var homeModule = angular.module('homeM', [])
           $location.path('/productD');
         }
         
+
+        $scope.carouselIndex = 0;
+
+        $scope.slides = [
+          { "id": 1, "img": "images/homeBanner.jpg" }
+          , { "id": 2, "img": "images/homeBanner1.jpg" }
+          , { "id": 3, "img": "images/homeBanner2.jpg" }
+        ];
+
         self.image1 = links.imageBasePath + 'homeBanner.jpg';
         self.image2 = links.imageBasePath + 'homeBanner1.jpg';
         self.image3 = links.imageBasePath + 'homeBanner2.jpg';
