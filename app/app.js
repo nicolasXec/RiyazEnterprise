@@ -29,8 +29,6 @@ require('./components/header/header.component.js');
 require('./components/productDetail/productDetail.component.js');
 require('./components/aboutUs/aboutUs.component.js');
 
-//require('../node_modules/angular-jk-carousel/dist/jk-carousel.min.js');
-
 var app = angular.module('webApp', [
   //user serices
   'menuS'
@@ -48,8 +46,6 @@ var app = angular.module('webApp', [
   , 'ngAnimate'
   , 'ngAria'
   , 'ngMaterial'
-  //
-  , 'angular-carousel'
 ]);
 
 
