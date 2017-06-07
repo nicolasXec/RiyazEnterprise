@@ -36,11 +36,11 @@
 </head>
 
 <body ng-controller="appController as main">
-  <div  class="fab-scroll-to-top-btn">
-    <md-button ng-click="main.top('header')" class="md-fab md-mini " aria-label="Eat cake">
+
+    <md-button ng-click="main.top('header')" class=" scroll-hide md-fab md-mini fab-scroll-to-top-btn" ng-show="boolChangeClass" aria-label="Eat cake">
       <md-icon aria-label="Menu" class="material-icons text-white">expand_less</md-icon>
     </md-button>
-  </div>
+
   <header id="header"></header>
   <div ng-view></div>
   <footer></footer>

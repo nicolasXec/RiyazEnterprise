@@ -16,13 +16,14 @@ webApp.directive('cardItem', ['$anchorScroll' ,function($anchorScroll){
     , templateUrl: links.templatesBasePath + 'card.tpl.html'
     , controllerAs: 'ctrl'
     , restrict: 'EA'
-    ,controller: ['$location', function($location){
+    ,controller: ['$location', 'anchorSmoothScroll' , function($location , anchorSmoothScroll){
 
       var self = this;
 
-      self.showDetails = function(){
-        $anchorScroll();
+      self.showDetails = function(eID){
+
         $location.path('/productD');
+         anchorSmoothScroll.scrollTo(eID);
       }
 
     }]

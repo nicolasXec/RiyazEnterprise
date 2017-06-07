@@ -4,8 +4,8 @@ var homeModule = angular.module('homeM', [])
   .component('home', {
     templateUrl: links.templatesBasePath + 'home.html'
     , controller: ['$scope', '$location'
-      , '$mdPanel', '$anchorScroll'
-      , function homeController($scope, $location, $mdPanel, $anchorScroll) {
+      , '$mdPanel', '$anchorScroll' , 'anchorSmoothScroll'
+      , function homeController($scope, $location, $mdPanel, $anchorScroll , anchorSmoothScroll) {
         console.log("hello i am home controller");
 
         var self = this;
@@ -16,11 +16,12 @@ var homeModule = angular.module('homeM', [])
           console.log('nav link clicked');
         };
 
-        self.showDetails = function(){
-          $anchorScroll();
+        self.showDetails = function(eID){
+          // $anchorScroll();
           $location.path('/productD');
+           anchorSmoothScroll.scrollTo(eID);
         }
-        
+
 
         $scope.carouselIndex = 0;
 

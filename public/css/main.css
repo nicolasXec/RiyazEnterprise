@@ -15,5 +15,17 @@ body{
     z-index: 80;
 }
 
+.fab-scroll-to-top-btn{
+
+transition:all linear 0.3s !important;
+}
+
+.fab-scroll-to-top-btn.ng-hide {
+  opacity: 0;
+}
+
+
+
+
 @import url(https://fonts.googleapis.com/css?family=Lato);
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css);

@@ -293,7 +293,6 @@ app.directive('scrollFix', ['$window', function ($window) {
       var topClass = "fix-to-top";
       var offsetTop = element.prop('offsetTop');
 
-      console.log("directive intitiated" + JSON.stringify($scope.fixed));
 
       $win.on('scroll', function () {
         if ($window.pageYOffset >= offsetTop) {
@@ -310,6 +309,30 @@ app.directive('scrollFix', ['$window', function ($window) {
   }
 
 }]);
+
+app.directive('scrollHide' , [ '$window' , function($window){
+    var $win = angular.element($window);
+          return {
+                restrict : 'AC'
+                , link: function(scope , element , attrs){
+
+
+                  $win.bind("scroll", function() {
+                        if (this.pageYOffset >= 800) {
+                            scope.boolChangeClass = true;
+                            console.log('Scrolled below header.' + scope.boolChangeClass);
+                        } else {
+                            scope.boolChangeClass = false;
+                            console.log('Header is in view.');
+                        }
+                       scope.$apply();
+                     });
+                }
+
+          }
+}
+
+]);
 
 app.directive('navMenu', ['$window', '$location', function ($window, $location) {
 
