@@ -14,6 +14,10 @@ var footerModule = angular.module('footerM', [])
         $location.path(path);
       }
 
+      self.enquiry = function($event){
+        console.log('click');
+      }
+
     }]
   });
 
