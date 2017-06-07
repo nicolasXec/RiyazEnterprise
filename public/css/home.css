@@ -346,6 +346,7 @@ text-overflow: ellipsis;
 }
 .fa-facebook:hover {
     background-color:  #1a30d0;
+    color:white;
 }
 .fa-twitter {
     padding:10px 12px;
@@ -358,6 +359,7 @@ text-overflow: ellipsis;
 }
 .fa-twitter:hover {
     background-color: #00aced;
+      color:white;
 }
 .fa-rss {
     padding:10px 14px;
@@ -382,6 +384,7 @@ text-overflow: ellipsis;
 }
 .fa-youtube:hover {
     background-color: #e64a41;
+      color:white;
 }
 .fa-linkedin {
     padding:10px 14px;
@@ -406,6 +409,7 @@ text-overflow: ellipsis;
 }
 .fa-google-plus:hover {
     background-color: #e25714;
+      color:white;
 }
 
 /* menu panel */

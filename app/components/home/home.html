@@ -1,14 +1,14 @@
 <!-- <h1>{{ $ctrl.tittle }}</h1> -->
 <div flex>
-  <div class="home-page-banner" >
-  </div>
+  <!-- <div class="home-page-banner" >
+  </div> -->
 </div>
 <div flex>
-  <div class="carousel-demo">
+  <div class="carousel-demo" style="width:100%;">
     <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-controls rn-carousel-auto-slide rn-carousel-pause-on-hover
       rn-carousel-buffered class="carousel2">
       <li ng-repeat="slide in slides track by slide.id">
-        <div ng-style="{'background-image': 'url(' + slide.img + ')'}" class="bgimage">
+        <div ng-style="{'background-image': 'url(' + slide.img + ')'}" class="bgimage home-page-banner">
         </div>
       </li>
     </ul>

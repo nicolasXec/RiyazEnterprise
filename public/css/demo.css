@@ -1,27 +1,4 @@
-html, body { 
-  height:100%; 
-  padding:0;
-  margin:0;
-}
-body {
-  margin: 0;
-  background: #333;
-  color:white;
-  padding: 10px;
-}
-a {
-  color:white;
-}
-* {
-  font-family: 'Droid Sans', sans-serif;
-}
-h1 {
-  margin-top: 5px;
-}
-h3 {
-  font-size:30px;
-  margin: 30px 0 10px 0;
-}
+
 
 .center {
     text-align: center;
@@ -35,8 +12,8 @@ h3 {
 }
 
 ul[rn-carousel] {
-    width:400px;
-    height:200px;
+
+    height:572px;
     margin: 0 auto;
 }
 
@@ -48,7 +25,7 @@ ul[rn-carousel] {
 }
 
 .carousel-demo {
-    margin-top:20px;
+
     display:inline-block;
     text-align: center;
 }
@@ -76,4 +53,10 @@ input.tiny {
 }
 .custom-indicator span.active {
   color:yellow !important;
+}
+
+.rn-carousel-control {
+  top:5em;
+
+ font-size:4em;
 }
