@@ -5,7 +5,7 @@
 
 <md-card style="overflow:hidden" class="text-md-center">
 
-<img ng-src="images/1.jpg" class="md-card-image card-item-image" alt="Washed Out">
+<img ng-click="ctrl.showDetails()" ng-src="images/1.jpg" class="md-card-image card-item-image" alt="Washed Out">
 <md-card-title>
     <md-card-title-text>
         <span class="card-item-product-text">Living Room</span>
@@ -15,7 +15,7 @@
 </md-card-title>
 <md-card-content>
 
-    <md-button class="md-raised md-warn pl-3 pr-3 card-item-btn-viewProd">View Product</md-button>
+    <md-button ng-click="ctrl.showDetails()" class="md-raised md-warn pl-3 pr-3 card-item-btn-viewProd">View Product</md-button>
 </md-card-content>
 
 </md-card>

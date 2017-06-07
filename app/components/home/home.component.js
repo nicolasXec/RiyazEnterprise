@@ -3,9 +3,9 @@ var links = require('../../common/links.js');
 var homeModule = angular.module('homeM', [])
   .component('home', {
     templateUrl: links.templatesBasePath + 'home.html'
-    , controller: ['$scope'
-      , '$mdPanel'
-      , function homeController($scope, $mdPanel) {
+    , controller: ['$scope', '$location'
+      , '$mdPanel', '$anchorScroll'
+      , function homeController($scope, $location, $mdPanel, $anchorScroll) {
         console.log("hello i am home controller");
 
         var self = this;
@@ -15,6 +15,15 @@ var homeModule = angular.module('homeM', [])
         self.navClicked = function () {
           console.log('nav link clicked');
         };
+
+        self.showDetails = function(){
+          $anchorScroll();
+          $location.path('/productD');
+        }
+        
+        self.image1 = links.imageBasePath + 'homeBanner.jpg';
+        self.image2 = links.imageBasePath + 'homeBanner1.jpg';
+        self.image3 = links.imageBasePath + 'homeBanner2.jpg';
 
         self.navItems = [
           { name: "Product", hasCollps: true, active: false, id: 1 }

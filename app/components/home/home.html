@@ -5,6 +5,16 @@
 </div>
 
 <div flex>
+
+  <ul rn-carousel class="image" rn-carousel-controls rn-carousel-auto-slide>
+  <li><img ng-src-"$ctrl.image1" ></li>  
+  <li><img ng-src-"$ctrl.image2" ></li>  
+  <li><img ng-src-"$ctrl.image3" ></li>  
+</ul>
+
+</div>
+
+<div flex>
   <hr class="invisible" />
   <md-content class="md-padding" style="background-color:white;">
 <div class="text-md-center">
@@ -21,21 +31,21 @@
   <div flex layout="row">
     <div flex class="text-md-center">
       <md-card>
-        <img ng-src="images/1.jpg" class="md-card-image" alt="Washed Out">
+        <img  ng-click="$ctrl.showDetails()" ng-src="images/1.jpg" class="md-card-image" alt="Washed Out">
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">Living Room</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
-          <md-button class="md-raised md-warn card-item-btn">Show</md-button>
+          <md-button ng-click="$ctrl.showDetails()" class="md-raised md-warn card-item-btn">Show</md-button>
         </md-card-content>
       </md-card>
     </div>
 
     <div flex style="text-align:center">
 <md-card>
-  <img ng-src="images/2.jpg" class="md-card-image" alt="Washed Out">
+  <img ng-click="$ctrl.showDetails()" ng-src="images/2.jpg" class="md-card-image" alt="Washed Out">
   <md-card-title>
     <md-card-title-text>
       <span class="md-headline">Kitchen</span>
@@ -44,7 +54,7 @@
   <md-card-content>
 
 
-    <md-button class="md-raised md-warn card-item-btn">Shop Now</md-button>
+    <md-button ng-click="$ctrl.showDetails()" class="md-raised md-warn card-item-btn">Shop Now</md-button>
 
 
   </md-card-content>
@@ -56,7 +66,7 @@
 
 <div flex style="text-align:center">
 <md-card>
-  <img ng-src="images/3.jpg" class="md-card-image" alt="Washed Out">
+  <img ng-click="$ctrl.showDetails()" ng-src="images/3.jpg" class="md-card-image" alt="Washed Out">
   <md-card-title>
     <md-card-title-text>
       <span class="md-headline">Bathroom</span>
@@ -65,7 +75,7 @@
   <md-card-content>
 
 
-    <md-button class="md-raised md-warn card-item-btn">Show</md-button>
+    <md-button ng-click="$ctrl.showDetails()" class="md-raised md-warn card-item-btn">Show</md-button>
   </md-card-content>
 
 </md-card>
@@ -109,17 +119,14 @@
   <div flex layout="row">
     <div flex class="text-md-center">
       <md-card>
-        <img ng-src="images/1.jpg" class="md-card-image" alt="Washed Out">
+        <img ng-click="$ctrl.showDetails()" ng-src="images/1.jpg" class="md-card-image" alt="Washed Out">
         <md-card-title>
           <md-card-title-text>
             <span class="md-headline">Hindware</span>
           </md-card-title-text>
         </md-card-title>
         <md-card-content>
-
-
-
-          <md-button class="md-raised md-warn card-item-btn">Show</md-button>
+          <md-button ng-click="$ctrl.showDetails()" class="md-raised md-warn card-item-btn">Show</md-button>
         </md-card-content>
 
       </md-card>
@@ -129,18 +136,14 @@
 
     <div flex style="text-align:center">
 <md-card>
-  <img ng-src="images/2.jpg" class="md-card-image" alt="Washed Out">
+  <img ng-click="$ctrl.showDetails()" ng-src="images/2.jpg" class="md-card-image" alt="Washed Out">
   <md-card-title>
     <md-card-title-text>
       <span class="md-headline">Jaqur</span>
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
-
-
-    <md-button class="md-raised md-warn card-item-btn">Show</md-button>
-
-
+    <md-button ng-click="$ctrl.showDetails()" class="md-raised md-warn card-item-btn">Show</md-button>
   </md-card-content>
 
 </md-card>
@@ -150,16 +153,14 @@
 
 <div flex style="text-align:center">
 <md-card>
-  <img ng-src="images/3.jpg" class="md-card-image" alt="Washed Out">
+  <img ng-click="$ctrl.showDetails()" ng-src="images/3.jpg" class="md-card-image" alt="Washed Out">
   <md-card-title>
     <md-card-title-text>
       <span class="md-headline">Bayern</span>
     </md-card-title-text>
   </md-card-title>
   <md-card-content>
-
-
-    <md-button class="md-raised md-warn card-item-btn">Show</md-button>
+    <md-button ng-click="$ctrl.showDetails()" class="md-raised md-warn card-item-btn">Show</md-button>
   </md-card-content>
 
 </md-card>

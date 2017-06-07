@@ -67,19 +67,19 @@ angular.module('menuS', [])
              {title: "SHOWERS",  //category
               id:1,
               products: [ //products in category
-                {name:"Grand", id:1}, {name:"Multi function", id:2}, {name:"Slim rain", id:3}
+                {name:"Grand", id:1}, {name:"Regular", id:2}, {name:"Slim rain", id:3}
               ],
               imgUrl:null},
               {title: "BASINS",  //category
                id:2,
                products: [
-                {name:"Cloakroom", id:1}, {name:"corner", id:2}, {name:"vanity", id:3}
+                {name:"Cloakroom", id:1}, {name:"Corner", id:2}, {name:"Vanity", id:3}
               ],
               imgUrl:"47"}
               ,     {title: "TOILETS",  //category
                    id:2,
                    products: [
-                    {name:"Denver close", id:1}, {name:"Euro", id:2}, {name:"Savoy", id:3}
+                    {name:"Denver", id:1}, {name:"Euro", id:2}, {name:"Savoy", id:3}
                   ],
                   imgUrl:"47"}
            ]

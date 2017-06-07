@@ -8,8 +8,9 @@ require('angular-material');
 require('angular-animate');
 require('angular-aria');
 
-// var ngTouch = require('angular-touch');
-// var carousel  = require('angular-carousel');
+var ngTouch = require('angular-touch');
+var carousel  = require('angular-carousel');
+
 
 var links = require('./common/links.js');
 
@@ -28,6 +29,8 @@ require('./components/header/header.component.js');
 require('./components/productDetail/productDetail.component.js');
 require('./components/aboutUs/aboutUs.component.js');
 
+//require('../node_modules/angular-jk-carousel/dist/jk-carousel.min.js');
+
 var app = angular.module('webApp', [
   //user serices
   'menuS'
@@ -45,6 +48,8 @@ var app = angular.module('webApp', [
   , 'ngAnimate'
   , 'ngAria'
   , 'ngMaterial'
+  //
+  , 'angular-carousel'
 ]);
 
 
@@ -203,9 +208,14 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
 
   }])
-  .controller('appController', [ '$scope' , function($scope){
-    console.log("app conroller intiated yeay!!");
+  .controller('appController', [ '$anchorScroll' , function($anchorScroll){
+    //console.log("app conroller intiated yeay!!");
     var self = this;
+
+    self.top = function(){
+      console.log('vack to top');
+      $anchorScroll();
+    }
 
   }]);
 
