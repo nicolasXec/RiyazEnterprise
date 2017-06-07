@@ -31,7 +31,7 @@ angular.module('menuS', [])
                   ],
                   imgUrl:"47"}
            ]
-          , imgUrl:'45'
+          , imgUrl:'4'
           },
           {title: "Kitchen",
             id:2
@@ -43,7 +43,7 @@ angular.module('menuS', [])
               ],
               imgUrl:"42"}
            ]
-          , imgUrl:'43'
+          , imgUrl:'6'
           },
           {title: "Bathroom",
           id:3
@@ -55,7 +55,7 @@ angular.module('menuS', [])
               ],
               imgUrl:"45"}
            ]
-            , imgUrl:'47'
+            , imgUrl:'5'
           }
         ]
          },
@@ -79,11 +79,11 @@ angular.module('menuS', [])
               ,     {title: "TOILETS",  //category
                    id:2,
                    products: [
-                    {name:"Denver close couple", id:1}, {name:"Euro", id:2}, {name:"Savoy", id:3}
+                    {name:"Denver close", id:1}, {name:"Euro", id:2}, {name:"Savoy", id:3}
                   ],
                   imgUrl:"47"}
            ]
-          , imgUrl:'45'
+          , imgUrl:'2'
           },
           {title: "Jaqur",
             id:2
@@ -95,7 +95,7 @@ angular.module('menuS', [])
               ],
               imgUrl:"42"}
            ]
-          , imgUrl:'43'
+          , imgUrl:'3'
           },
           {title: "Bayern",
           id:3
@@ -107,7 +107,7 @@ angular.module('menuS', [])
               ],
               imgUrl:"45"}
            ]
-            , imgUrl:'47'
+            , imgUrl:'1'
           }
         ]
         }

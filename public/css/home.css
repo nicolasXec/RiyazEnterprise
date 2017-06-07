@@ -19,7 +19,12 @@
     box-shadow: 1px 2px 6px -3px;
     /*padding:4px;*/
 }
-
+.inquiry-panel{
+  background-color: #fafafa;
+  box-shadow: 1px 2px 6px -3px;
+  width: 49%;
+  height: 37em;
+}
 .panel-item-list-text{
   font-size:14px;
   line-height: 1.5;

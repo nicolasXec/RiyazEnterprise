@@ -80,7 +80,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
       when('/about', {
         template: '<about-us></about-us>'
       }).
-      otherwise('/home'); 
+      otherwise('/home');
       //EOC route configuration
 
 
@@ -103,7 +103,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
         console.log('menu controller init');
 
         var _self = this;
-        _self.imageUrl = "45";
+        _self.imageUrl = "5";
 
         _self.menuItems = menuService.getCurrentMenuItem();
         _self.subItem =  _self.menuItems[0].list;
@@ -173,16 +173,16 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
  //BOC enquiry form panel
   $mdPanelProvider.definePreset('enquiry', {
-      attachTo: angular.element(document.body),
+      attachTo: angular.element(document.body), 
       controllerAs: 'ctrl',
       templateUrl: links.templatesBasePath + 'enquiry.html',
-      //panelClass: 'menu-panel',
+      panelClass: 'inquiry-panel',
       clickOutsideToClose: true,
       escapeToClose: true,
       hasBackdrop:true,
       focusOnOpen: false,
       trapFocus: true,
-      zIndex:80,
+      zIndex:140,
       propagateContainerEvents: false,
       groupName: 'contact',
       controller: ['mdPanelRef',  function(mdPanelRef){
@@ -268,7 +268,7 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
       self._mdPanel = $mdPanel;
 
       //TODO move this to a serice or some other appropriate place
-      //BOC user menu data 
+      //BOC user menu data
 
       //flag to keep menu open if set to true
       //it return a reject when the close intercept promise resolves
@@ -354,7 +354,7 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
           //close the menu
           //TODO this throws exception when panel does not exits, which is the first time
           //or when its routed to second page the first time
-           if (self.mdPanelRef && self.mdPanelRef.isAttached ) {  
+           if (self.mdPanelRef && self.mdPanelRef.isAttached ) {
             self.mdPanelRef.hide();
           }
 
