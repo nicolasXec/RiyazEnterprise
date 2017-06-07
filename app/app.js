@@ -8,8 +8,8 @@ require('angular-material');
 require('angular-animate');
 require('angular-aria');
 
-var ngTouch = require('angular-touch');
-var carousel  = require('angular-carousel');
+// var ngTouch = require('angular-touch');
+// var carousel  = require('angular-carousel');
 
 
 var links = require('./common/links.js');
@@ -174,7 +174,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
  //BOC enquiry form panel
   $mdPanelProvider.definePreset('enquiry', {
-      attachTo: angular.element(document.body), 
+      attachTo: angular.element(document.body),
       controllerAs: 'ctrl',
       templateUrl: links.templatesBasePath + 'enquiry.html',
       panelClass: 'inquiry-panel',

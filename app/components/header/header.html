@@ -6,16 +6,17 @@
 <div flex class="header-color header">
   <div layout="row">
 
-    <div flex>
+    <div flex="45">
       <div class="row">
-        <div class="col-md-5 offset-md-2 pt-4">
+        <div class="col-md-8 offset-md-2 pt-4">
           <h5 ng-click="$ctrl.home()" class="text-white logo-text pr-2">Riyaz Enterprises</h5>
           <img ng-click="$ctrl.home()" src="https://storage.googleapis.com/brilliant-brand-161108.appspot.com/Logo.png" alt="no image found" class="logo pl-3">
         </div>
       </div>
     </div>
-    <div flex>
-      <md-content class="md-padding">
+    <div flex layout="row" layout-align="end center">
+      <md-content flex flex-direction="reverse" flex-offset="10" class="md-padding" >
+
         <md-icon aria-label="Menu" class="material-icons text-white">phone</md-icon>
         <span class="text-white header-text">9049035958</span>
         <md-icon aria-label="Menu" class="material-icons text-white">email</md-icon>
@@ -33,7 +34,7 @@
     <div class="col-md-2 offset-md-1 ">
       <img src="images/logo.png" ng-show="$ctrl.fixedNav" alt="no image found" class="logo-in-fixed-nav">
     </div>
-    <div class="col-md-6" style="z-index:81">
+    <div class="col-md-8" style="z-index:81">
       <nav-menu items="$ctrl.navItems" ></nav-menu>
     </div>
 
