@@ -267,8 +267,6 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
          anchorSmoothScroll.scrollTo(eID);
     }
 
-
-
   }]);
 
 app.directive('scrollFix', ['$window', function ($window) {
