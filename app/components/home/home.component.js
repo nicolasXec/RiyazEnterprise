@@ -12,6 +12,10 @@ var homeModule = angular.module('homeM', [])
 
         self.fixedNav = false;
 
+        // self.home = function(){
+        //   $location.path('/home');
+        // }
+
         self.navClicked = function () {
           console.log('nav link clicked');
         };

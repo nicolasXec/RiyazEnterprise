@@ -8,9 +8,9 @@
 
     <div flex="35">
       <div class="row">
-        <div class="col-md-10 offset-md-2 pt-4">
+        <div style="z-index:81" class="col-md-10 offset-md-2 pt-4">
           <h5 ng-click="$ctrl.home()" class="text-white logo-text pr-2">Riyaz Enterprises</h5>
-          <img ng-click="$ctrl.home()" src="https://storage.googleapis.com/brilliant-brand-161108.appspot.com/Logo.png" alt="no image found" class="logo pl-3">
+          <img ng-click="$ctrl.home()" ng-src="https://storage.googleapis.com/brilliant-brand-161108.appspot.com/Logo.png" alt="no image found" class="logo pl-3">
         </div>
       </div>
     </div>
@@ -21,8 +21,8 @@
         <span class="text-white header-text mr-4">9049035958</span>
         <md-icon aria-label="Menu" class="material-icons text-white">email</md-icon>
 
-        <span class="text-white  header-text">riyazenterprises@gmail.com</span>
-        <md-button ng-click="$ctrl.enquiry($event)" class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Send Inquiry</md-button>
+        <span class="text-white  header-text">info@riyazenterprise.com</span>
+        <md-button style="z-index:81" ng-click="$ctrl.enquiry($event)" class="md-accent md-raised md-hue-2 text-white pl-3 pr-3">Send Inquiry</md-button>
 
       </md-content>
     </div>
@@ -31,8 +31,8 @@
 
 <scroll-fix flex class="nav-bar-contaienr" fixed="$ctrl.fixedNav"  >
   <div class="row">
-    <div class="col-md-2 offset-md-1 ">
-      <img src="https://storage.googleapis.com/brilliant-brand-161108.appspot.com/Logo.png" ng-show="$ctrl.fixedNav" alt="no image found" class="logo-in-fixed-nav">
+    <div style="z-index:81" class="col-md-2 offset-md-1 ">
+      <img ng-click="$ctrl.home()" ng-src="https://storage.googleapis.com/brilliant-brand-161108.appspot.com/Logo.png" ng-show="$ctrl.fixedNav" alt="no image found" class="logo-in-fixed-nav">
     </div>
     <div class="col-md-8" style="z-index:81">
       <nav-menu items="$ctrl.navItems" ></nav-menu>
