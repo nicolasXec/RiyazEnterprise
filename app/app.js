@@ -264,15 +264,12 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
 
     self.top = function(eID){
       console.log('vack to top');
-
          anchorSmoothScroll.scrollTo(eID);
     }
 
 
 
   }]);
-
-
 
 app.directive('scrollFix', ['$window', function ($window) {
 

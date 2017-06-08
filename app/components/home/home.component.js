@@ -19,10 +19,10 @@ var homeModule = angular.module('homeM', [])
         self.navClicked = function () {
           console.log('nav link clicked');
         };
-
-        self.showDetails = function(eID){
+        
+        self.showCategories = function(eID){
           // $anchorScroll();
-          $location.path('/productD');
+          $location.path('/products');
            anchorSmoothScroll.scrollTo(eID);
         }
 
