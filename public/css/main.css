@@ -6,7 +6,7 @@ body{
 
 }
 .panel-overlay{
-  //display: none;
+  /*display: none;*/
   position: absolute;
     top: 136px;
     width: 100%;

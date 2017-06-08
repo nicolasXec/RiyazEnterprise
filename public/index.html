@@ -1,6 +1,5 @@
 <!doctype html>
 <html class="no-js" lang="en" ng-app="webApp">
-
 <head>
   <base href="">
   <meta charset="utf-8">
@@ -8,47 +7,20 @@
   <title>Website</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Place favicon.ico in the root directory -->
-  <!-- <link rel="stylesheet" href="css/vendor.css"> -->
-  <link rel="stylesheet" href="css/color-codes.css">
-  <link rel="newer stylesheet" href="css/custom-directive.css">
-  <link rel="stylesheet" href="css/main.css">
   <link href="css/angular-material.min.css" rel="old stylesheet">
-  <link href="css/home.css" rel="newer stylesheet">
-
-  <!--  material icon library-->
-
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-
-  <!-- bootstrap library -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
-
-
-
-  <!-- other library -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
- <link href='css/angular-carousel.css' rel='stylesheet' type='text/css'>
-        <link href='css/demo.css' rel='stylesheet' type='text/css'>
-
-
+ <link href='css/style.css' rel='stylesheet' type='text/css'>
 </head>
-
 <body ng-controller="appController as main">
-
     <md-button ng-click="main.top('header')" class=" scroll-hide md-fab md-mini fab-scroll-to-top-btn" ng-show="boolChangeClass" aria-label="Eat cake">
       <md-icon aria-label="Menu" class="material-icons text-white">expand_less</md-icon>
     </md-button>
-
   <header id="header"></header>
   <div ng-view></div>
   <footer></footer>
 </body>
-  <!-- javascript filse -->
-
-
   <script src="js/vendor.js"></script>
   <script src="js/app.js"></script>
-  <!--<script src="js/jk-carousel.min.js"></script>-->
 </html>

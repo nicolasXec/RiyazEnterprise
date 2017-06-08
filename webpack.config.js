@@ -5,6 +5,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 var devMode = true;
+var _compress = false;
+var _sourceMaps = false;
 
 module.exports = {
   context: __dirname, //means the current directory path where webpack is installed
@@ -35,8 +37,8 @@ module.exports = {
    )
    //compiler options
    ,new webpack.optimize.UglifyJsPlugin({
-         compress: devMode?false:false
-        ,sourceMap: devMode?false:false
+         compress: _compress
+        ,sourceMap: _sourceMaps
         ,drop_console: devMode?false:true
         ,beautify: devMode?false:false
         ,comments: devMode?true:false //preserve comments
