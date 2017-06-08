@@ -2,7 +2,7 @@
 
 
   <div class="row">
-    <ul class="breadcrumb mt-3" style='background-color: #ffffff;
+    <ul class="breadcrumb mt-3" style='background-color: transparent;
 padding: 0px;
 margin: 0px;
 color:#999999'>
@@ -12,12 +12,14 @@ color:#999999'>
 <li class="breadcrumb-item ">Bedroom</li>
 </ul>
 
-<div class="col-md-10 offset-md-1">
+<div class="">
   <div class="text-md-center">
-    <h3 class="mb-3">Furniture</h3>
-  </div>
 
-  <div class="row">
+  </div>
+<md-content class="md-padding" style="background-color:transparent;">
+
+
+  <div class="row mt-3">
     <div class="col-md-8">
       <div layout="row" layout-align="space-between center" layout-wrap>
         <div flex="6" class="text-md-left">
@@ -29,7 +31,7 @@ color:#999999'>
         <div flex class=" text-md-center">
 
 
-          <img src="images/2.jpg" style="width:96%;" alt="">
+          <img src="images/product.jpg" style="width:96%;" alt="">
 </div>
 
 <div flex="6" class="text-md-left">
@@ -40,27 +42,31 @@ color:#999999'>
 </div>
 </div>
 <hr />
-<div layout="row" layout-align="space-between center" class="text-md-center">
+<div layout="row" layout-align="space-between center" class="text-md-center pr-3 pl-3">
 
   <div flex>
-    <img ng-click="null" src="images/2.jpg" alt="" class="img-thumbnail" style="height:90px; width: 112px;">
+    <img ng-click="null" src="images/product.jpg" alt="" class="img-thumbnail" style="height:90px; width: 112px;">
 </div>
 <div flex>
-  <img ng-click="null" src="images/2.jpg" alt="" class="img-thumbnail" style="height:90px; width: 112px;" >
+  <img ng-click="null" src="images/product.jpg" alt="" class="img-thumbnail" style="height:90px; width: 112px;" >
 </div>
 <div flex>
-  <img ng-click="null" src="images/2.jpg" alt="" class="img-thumbnail" style="height:90px; width: 112px;" >
+  <img ng-click="null" src="images/product.jpg" alt="" class="img-thumbnail" style="height:90px; width: 112px;" >
 </div>
 <div flex>
-  <img ng-click="null" src="images/2.jpg" alt="" class="img-thumbnail" style="height:90px; width: 112px;" >
+  <img ng-click="null" src="images/product.jpg" alt="" class="img-thumbnail" style="height:90px; width: 112px;" >
 </div>
 
 </div>
 <hr />
 </div>
 <div class="col-md-4">
+
   <img src="images/offer.jpg" style="width:100%;" alt="">
-<span class='mb-3' style="display:inline-block">OverView</span>
+  <h1 class="mb-3 mt-4" style='font-family: "Mrs Eaves XL Serif", serif;
+  font-size: 34px;
+  line-height: 40px;'>Furniture</h1>
+<!-- <span class='mb-3 mt-2' style="display:inline-block">OverView</span> -->
 <dl class="row">
 
   <dt class="col-sm-6" style="color: #b2b2b2;
@@ -82,67 +88,168 @@ color:#999999'>
 <span class='mb-3' style="display:inline-block">Description</span>
 <dl>
 
-  <dd style="font-size:13px"> a breif discription
+  <dd style="font-size:13px" class="text-justify"> French connection. Get a taste of life in a countryside chateau with the Lyon bench. Its distinctive French Provincial design style is timelessly elegant. Beautifully tufted, this stunner is equally at home at the foot of your bed, by a window or right in your living room. It’s available in a host of colours and patterns, so pick one to contrast or complement your space, and get comfortable.
 </dd>
 </dl>
 </div>
 </div>
 
-
+</md-content>
 <hr class="invisible" />
 <hr class="invisible" />
 <hr class="invisible" />
-<div class="row">
 
-  <div class="col-md-12">
-
-
-    <div layout="row" layout-align="space-between center">
-      <h3>Popular</h3>
+<md-content class="md-padding" style="background-color:white;">
+<div class="text-md-center">
+  <span class="card-item-tittle ">Popular</span>
+</div>
 
 
-    </div>
-    <div layout="row">
 
-      <div class="flex">
-        <card-item></card-item>
-      </div>
-      <div class="flex">
-        <card-item></card-item>
-      </div>
-      <div class="flex">
-        <card-item></card-item>
-      </div>
-    </div>
+<div layout="row" layout-align="space-between center">
+  <div flex="5" class="text-md-left">
+    <md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Eat cake">
+      <md-icon aria-label="Menu" class="material-icons ">navigate_before</md-icon>
+    </md-button>
+
   </div>
+  <div flex layout="row">
+    <div flex class="text-md-center">
+      <md-card style="overflow:hidden">
+        <img ng-click="$ctrl.showCategories('header')" ng-src="images/1.jpg" class="md-card-image card-item-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Hindware</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <md-button ng-click="$ctrl.showCategories('header')" class="md-raised md-warn card-item-btn">Show</md-button>
+        </md-card-content>
 
+      </md-card>
+
+    </div>
+
+
+    <div flex style="text-align:center">
+<md-card style="overflow:hidden">
+  <img ng-click="$ctrl.showCategories('header')" ng-src="images/2.jpg" class="md-card-image card-item-image" alt="Washed Out">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Jaqur</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <md-button ng-click="$ctrl.showCategories('header')" class="md-raised md-warn card-item-btn">Show</md-button>
+  </md-card-content>
+
+</md-card>
 
 </div>
-<hr class="invisible" />
-<div class="row">
-
-  <div class="col-md-12">
 
 
-    <div layout="row" layout-align="space-between center">
-      <h3>Featured</h3>
+<div flex style="text-align:center">
+<md-card style="overflow:hidden">
+  <img ng-click="$ctrl.showCategories('header')" ng-src="images/3.jpg" class="md-card-image card-item-image" alt="Washed Out">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Bayern</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <md-button ng-click="$ctrl.showCategories('header')" class="md-raised md-warn card-item-btn">Show</md-button>
+  </md-card-content>
 
-    </div>
-    <div layout="row">
+</md-card>
 
-      <div class="flex">
-        <card-item></card-item>
-      </div>
-      <div class="flex">
-        <card-item></card-item>
-      </div>
-      <div class="flex">
-        <card-item></card-item>
-      </div>
-    </div>
-  </div>
 </div>
-<hr class="invisible" />
+</div>
+
+<div flex="5" class="text-md-right">
+  <md-button class="md-fab md-mini md-primary md-hue-2 " aria-label="Eat cake">
+    <md-icon aria-label="Menu" class="material-icons ">navigate_next</md-icon>
+  </md-button>
+
+</div>
+</div>
+
+</md-content>
+
+<md-content class="md-padding" style="background-color:white;">
+<div class="text-md-center">
+  <span class="card-item-tittle ">Featured</span>
+</div>
+
+
+
+<div layout="row" layout-align="space-between center">
+  <div flex="5" class="text-md-left">
+    <md-button class="md-fab md-mini md-primary md-hue-2" aria-label="Eat cake">
+      <md-icon aria-label="Menu" class="material-icons ">navigate_before</md-icon>
+    </md-button>
+
+  </div>
+  <div flex layout="row">
+    <div flex class="text-md-center">
+      <md-card style="overflow:hidden">
+        <img ng-click="$ctrl.showCategories('header')" ng-src="images/1.jpg" class="md-card-image card-item-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Hindware</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <md-button ng-click="$ctrl.showCategories('header')" class="md-raised md-warn card-item-btn">Show</md-button>
+        </md-card-content>
+
+      </md-card>
+
+    </div>
+
+
+    <div flex style="text-align:center">
+<md-card style="overflow:hidden">
+  <img ng-click="$ctrl.showCategories('header')" ng-src="images/2.jpg" class="md-card-image card-item-image" alt="Washed Out">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Jaqur</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <md-button ng-click="$ctrl.showCategories('header')" class="md-raised md-warn card-item-btn">Show</md-button>
+  </md-card-content>
+
+</md-card>
+
+</div>
+
+
+<div flex style="text-align:center">
+<md-card style="overflow:hidden">
+  <img ng-click="$ctrl.showCategories('header')" ng-src="images/3.jpg" class="md-card-image card-item-image" alt="Washed Out">
+  <md-card-title>
+    <md-card-title-text>
+      <span class="md-headline">Bayern</span>
+    </md-card-title-text>
+  </md-card-title>
+  <md-card-content>
+    <md-button ng-click="$ctrl.showCategories('header')" class="md-raised md-warn card-item-btn">Show</md-button>
+  </md-card-content>
+
+</md-card>
+
+</div>
+</div>
+
+<div flex="5" class="text-md-right">
+  <md-button class="md-fab md-mini md-primary md-hue-2 " aria-label="Eat cake">
+    <md-icon aria-label="Menu" class="material-icons ">navigate_next</md-icon>
+  </md-button>
+
+</div>
+</div>
+
+</md-content>
 
 </div>
 
