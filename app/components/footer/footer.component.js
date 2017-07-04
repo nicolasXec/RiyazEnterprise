@@ -3,7 +3,7 @@ var links = require('../../common/links.js');
 
 var footerModule = angular.module('footerM', [])
   .component('footer', {
-    templateUrl: links.templatesBasePath + 'footer.html',
+    templateUrl: 'footer.html',
     controller: ['$location', '$mdPanel', function ($location, $mdPanel) {
       console.log('footer component init');
 

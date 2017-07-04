@@ -92,7 +92,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
       attachTo: angular.element(document.body),
       // id:'navPanel',
       controllerAs: 'ctrl',
-      templateUrl: links.templatesBasePath + 'panel.tmpl.html',
+      templateUrl: 'panel.tmpl.html',
       panelClass: 'menu-panel',
       clickOutsideToClose: true,
       bindToController: true,
@@ -178,7 +178,7 @@ app.config(['$locationProvider', '$routeProvider', '$mdPanelProvider'
   $mdPanelProvider.definePreset('enquiry', {
       attachTo: angular.element(document.body),
       controllerAs: 'ctrl',
-      templateUrl: links.templatesBasePath + 'enquiry.html',
+      templateUrl: 'enquiry.html',
       panelClass: 'inquiry-panel',
       clickOutsideToClose: true,
       escapeToClose: true,
@@ -329,7 +329,33 @@ app.directive('scrollHide' , [ '$window' , function($window){
 
 ]);
 
-app.directive('navMenu', ['$window', '$location', function ($window, $location) {
+app.run(['$templateCache', '$compile', '$rootScope', function($templateCache, $compile, $rootScope){
+
+  console.log('run function');
+
+  var tmpl = "<md-button ng-class=\"{  'add-bold' : menuItem.active }\" " +
+            "class=\"nav-link-btn \" " + 
+            "ng-mouseenter=\"hover = true\" " + 
+            "ng-mouseleave=\"hover = false\" " + 
+            "ng-repeat=\"menuItem in items track by menuItem.id\" " + 
+            "ng-mouseover=\"ctrl.mouseOver($event, menuItem)\" " + 
+            "ng-click=\"ctrl.menuClick($event, menuItem)\"> " +
+      "{{menuItem.name}} " +
+      "<md-icon ng-show=\"menuItem.hasCollps\" " +
+                  "aria-label=\"Menu\" " +
+                  "class=\"material-icons\">{{hover ? \"keyboard_arrow_down\" : \"keyboard_arrow_up\"}} " +
+      "</md-icon> " +
+"</md-button>";
+
+//or put the templates in a script tag with a name
+//<script type="text/ng-template" id="templateId.html">
+
+ $templateCache.put('navMenu.tpl.html', tmpl);
+  
+}]);
+
+
+app.directive('navMenu', ['$window', '$location', '$compile', '$templateCache', function ($window, $location, $compile, $templateCache) {
 
   console.log("navMenu Directive intiated");
 
@@ -338,7 +364,7 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
     ,scope: {
       items: '='
     }
-    , templateUrl: links.templatesBasePath + 'navMenu.tpl.html'
+    , templateUrl: 'navMenu.tpl.html'
     , controllerAs: 'ctrl'
     , controller: ['$mdPanel', '$scope', 'menuService' , function ($mdPanel, $scope, menuService) {
 
@@ -474,3 +500,5 @@ app.directive('navMenu', ['$window', '$location', function ($window, $location) 
   }
 
 }]);
+
+

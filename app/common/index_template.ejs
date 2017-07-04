@@ -1,0 +1,83 @@
+<!doctype html>
+<html class="no-js" lang="en" ng-app="webApp">
+<head>
+  <base href="">
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Website</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/angular-material.min.css" rel="old stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet" />
+ <link href='css/style.css' rel='stylesheet' type='text/css'>
+</head>
+<body ng-controller="appController as main">
+    <md-button ng-click="main.top('header')" class=" scroll-hide md-fab md-mini fab-scroll-to-top-btn" ng-show="boolChangeClass" aria-label="Eat cake">
+      <md-icon aria-label="Menu" class="material-icons text-white">expand_less</md-icon>
+    </md-button>
+  <header id="header"></header>
+  <div ng-view style="background-color:white !important;"></div>
+  <footer></footer>
+</body>
+ <!-- <script src="js/vendor.js"></script>
+  <script src="js/app.js"></script>
+  -->
+  <% 
+//fetch the script 
+var path = require('path');
+fs = require('fs');
+//var minify = require('html-minifier').minify;
+
+var startPath = htmlWebpackPlugin.options.rootPath;
+
+if (!fs.existsSync(startPath)){
+    console.log("no dir ",startPath);
+    return;
+}
+
+function findFiles(startPath, extension){
+
+  var returnFiles = [];
+
+  var files = fs.readdirSync(startPath);
+
+
+  for ( var i = 0; i < files.length; i++)  {
+
+    var filename = path.join(startPath, files[i]);
+
+    var stat = fs.lstatSync(filename);
+
+    if (stat.isDirectory()){
+
+        returnFiles = returnFiles.concat(findFiles(filename,extension)); //recurse
+
+    }else if (filename.indexOf(extension) >= 0) {
+
+      returnFiles.push({
+        name: files[i]
+        , contents: fs.readFileSync(filename, {encoding : "utf8", flag : "r"})
+      });
+
+    }
+
+  }
+
+  return returnFiles;
+
+}
+
+var files = findFiles(startPath, "html");
+
+for ( var i = 0; i < files.length; i++)  {
+%> 
+   <script type="text/ng-template" id="<%= files[i].name %>">
+    <%= files[i].contents %>
+   </script>
+<% 
+} 
+%>
+
+</html>

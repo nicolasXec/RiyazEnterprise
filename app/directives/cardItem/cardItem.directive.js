@@ -13,7 +13,7 @@ webApp.directive('cardItem', ['$anchorScroll' ,function($anchorScroll){
     scope : {
         fixed : '='
     }
-    , templateUrl: links.templatesBasePath + 'card.tpl.html'
+    , templateUrl: 'card.tpl.html'
     , controllerAs: 'ctrl'
     , restrict: 'EA'
     ,controller: ['$location', 'anchorSmoothScroll' , function($location , anchorSmoothScroll){

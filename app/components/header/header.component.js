@@ -3,7 +3,7 @@ var links = require('../../common/links.js');
 
 var headerModule = angular.module('headerM', [])
   .component('header', {
-    templateUrl: links.templatesBasePath + 'header.html',
+    templateUrl: 'header.html',
 
     controller: ['$mdPanel', '$location', function ($mdPanel, $location) {
       console.log('header component init');

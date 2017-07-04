@@ -2,7 +2,7 @@
 var links = require('../../common/links.js');
 var homeModule = angular.module('homeM', [])
   .component('home', {
-    templateUrl: links.templatesBasePath + 'home.html'
+    templateUrl: 'home.html'
     , controller: ['$scope', '$location'
       , '$mdPanel', '$anchorScroll' , 'anchorSmoothScroll'
       , function homeController($scope, $location, $mdPanel, $anchorScroll , anchorSmoothScroll) {
