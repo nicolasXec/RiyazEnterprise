@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
-//var path = require('path');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+var htmlMinifier = require('html-minifier').minify
 
 const path = require('path');
 
@@ -30,11 +31,19 @@ module.exports = {
      ,minChunks: Infinity
    })
 
+   // html plugin to generate a html files
+   ,new HtmlWebpackPlugin({
+      template : path.resolve(__dirname, "app/common") + "/index_template.ejs"
+     ,filename : path.resolve(__dirname, "public") + "/index.html"
+     //custom properties
+     ,rootPath: path.resolve(__dirname, "app")
+   })
+
   //to copy the templates to public folder
-   , new CopyWebpackPlugin(
-         [{ context: __dirname, from: './app/**/*', to: '../templates', flatten: true }] //to is relative to webpack output
-       ,{ ignore: ['*.js']}
-   )
+  //  , new CopyWebpackPlugin(
+  //        [{ context: __dirname, from: './app/**/*', to: '../templates', flatten: true }] //to is relative to webpack output
+  //      ,{ ignore: ['*.js']}
+  //  )
    //compiler options
    ,new webpack.optimize.UglifyJsPlugin({
          compress: _compress
