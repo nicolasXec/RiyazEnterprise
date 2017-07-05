@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "^4.0.1",
+    "extract-text-webpack-plugin": "^2.1.2",
     "html-minifier": "^3.5.2",
     "html-webpack-plugin": "^2.29.0",
     "webpack": "^2.6.1"
