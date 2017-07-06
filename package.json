@@ -18,10 +18,15 @@
     "angular-touch": "^1.6.4"
   },
   "devDependencies": {
+    "autoprefixer-loader": "^3.2.0",
     "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.4",
     "extract-text-webpack-plugin": "^2.1.2",
     "html-minifier": "^3.5.2",
     "html-webpack-plugin": "^2.29.0",
+    "less-loader": "^4.0.4",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.18.2",
     "webpack": "^2.6.1"
   }
 }

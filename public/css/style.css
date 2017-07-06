@@ -207,7 +207,7 @@ transition:all linear 0.3s !important;
 }*/
 .panel-menu-category-nav{
   border-left: 3px solid transparent;
-  //transition: all .5s;
+  /*transition: all .5s;*/
 }
 .panel-menu-category-nav:hover{
   border-left: 3px solid red;
@@ -293,7 +293,8 @@ margin-right: 12px;
 
 .menu-panel md-list-item, md-list-item .md-list-item-inner {
   height: 40px;
-	min-height: initial; // initial makes better sense than 100%?
+	min-height: initial; 
+  /* initial makes better sense than 100%?*/
 
 
 }
@@ -453,7 +454,7 @@ text-overflow: ellipsis;
 
 
 /*for footer socia icons*/
-
+/*
 .footer-links{
     line-height: 18px;
     font-size: 12px;
@@ -581,7 +582,7 @@ text-overflow: ellipsis;
 .fa-google-plus:hover {
     background-color: #e25714;
       color:white;
-}
+}*/
 
 /* menu panel */
 .divider-reset{

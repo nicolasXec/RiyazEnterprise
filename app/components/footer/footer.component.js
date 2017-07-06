@@ -1,6 +1,8 @@
 
 var links = require('../../common/links.js');
 
+require('./footer.css');
+
 var footerModule = angular.module('footerM', [])
   .component('footer', {
     templateUrl: 'footer.html',
@@ -8,8 +10,6 @@ var footerModule = angular.module('footerM', [])
       console.log('footer component init');
 
       var self = this;
-
-
 
       self.go = function (path) {
         console.log('path ' + path);
